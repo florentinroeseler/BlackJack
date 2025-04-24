@@ -1,0 +1,155 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\flore\\Documents\\GitHub\\BlackJack\\BlackjackGame\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BAEEF9D4-AFC4-448D-A826-BE1778E9672E}|BlackjackGame.Client\\BlackjackGame.Client.csproj|c:\\users\\flore\\documents\\github\\blackjack\\blackjackgame\\blackjackgame.client\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BAEEF9D4-AFC4-448D-A826-BE1778E9672E}|BlackjackGame.Client\\BlackjackGame.Client.csproj|solutionrelative:blackjackgame.client\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAEEF9D4-AFC4-448D-A826-BE1778E9672E}|BlackjackGame.Client\\BlackjackGame.Client.csproj|c:\\users\\flore\\documents\\github\\blackjack\\blackjackgame\\blackjackgame.client\\viewmodels\\blackjackviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAEEF9D4-AFC4-448D-A826-BE1778E9672E}|BlackjackGame.Client\\BlackjackGame.Client.csproj|solutionrelative:blackjackgame.client\\viewmodels\\blackjackviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAEEF9D4-AFC4-448D-A826-BE1778E9672E}|BlackjackGame.Client\\BlackjackGame.Client.csproj|c:\\users\\flore\\documents\\github\\blackjack\\blackjackgame\\blackjackgame.client\\viewmodels\\localblackjackgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAEEF9D4-AFC4-448D-A826-BE1778E9672E}|BlackjackGame.Client\\BlackjackGame.Client.csproj|solutionrelative:blackjackgame.client\\viewmodels\\localblackjackgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0115D023-0975-4B61-9059-A5375A6F7113}|BlackJackGame.Core\\BlackJackGame.Core.csproj|c:\\users\\flore\\documents\\github\\blackjack\\blackjackgame\\blackjackgame.core\\game\\blackjackgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0115D023-0975-4B61-9059-A5375A6F7113}|BlackJackGame.Core\\BlackJackGame.Core.csproj|solutionrelative:blackjackgame.core\\game\\blackjackgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAEEF9D4-AFC4-448D-A826-BE1778E9672E}|BlackjackGame.Client\\BlackjackGame.Client.csproj|c:\\users\\flore\\documents\\github\\blackjack\\blackjackgame\\blackjackgame.client\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAEEF9D4-AFC4-448D-A826-BE1778E9672E}|BlackjackGame.Client\\BlackjackGame.Client.csproj|solutionrelative:blackjackgame.client\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAEEF9D4-AFC4-448D-A826-BE1778E9672E}|BlackjackGame.Client\\BlackjackGame.Client.csproj|c:\\users\\flore\\documents\\github\\blackjack\\blackjackgame\\blackjackgame.client\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAEEF9D4-AFC4-448D-A826-BE1778E9672E}|BlackjackGame.Client\\BlackjackGame.Client.csproj|solutionrelative:blackjackgame.client\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAEEF9D4-AFC4-448D-A826-BE1778E9672E}|BlackjackGame.Client\\BlackjackGame.Client.csproj|c:\\users\\flore\\documents\\github\\blackjack\\blackjackgame\\blackjackgame.client\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAEEF9D4-AFC4-448D-A826-BE1778E9672E}|BlackjackGame.Client\\BlackjackGame.Client.csproj|solutionrelative:blackjackgame.client\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAEEF9D4-AFC4-448D-A826-BE1778E9672E}|BlackjackGame.Client\\BlackjackGame.Client.csproj|c:\\users\\flore\\documents\\github\\blackjack\\blackjackgame\\blackjackgame.client\\services\\blackjackclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAEEF9D4-AFC4-448D-A826-BE1778E9672E}|BlackjackGame.Client\\BlackjackGame.Client.csproj|solutionrelative:blackjackgame.client\\services\\blackjackclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BlackjackGame.cs",
+              "DocumentMoniker": "C:\\Users\\flore\\Documents\\GitHub\\BlackJack\\BlackjackGame\\BlackJackGame.Core\\Game\\BlackjackGame.cs",
+              "RelativeDocumentMoniker": "BlackJackGame.Core\\Game\\BlackjackGame.cs",
+              "ToolTip": "C:\\Users\\flore\\Documents\\GitHub\\BlackJack\\BlackjackGame\\BlackJackGame.Core\\Game\\BlackjackGame.cs",
+              "RelativeToolTip": "BlackJackGame.Core\\Game\\BlackjackGame.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T21:48:29.332Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LocalBlackjackGame.cs",
+              "DocumentMoniker": "C:\\Users\\flore\\Documents\\GitHub\\BlackJack\\BlackjackGame\\BlackjackGame.Client\\ViewModels\\LocalBlackjackGame.cs",
+              "RelativeDocumentMoniker": "BlackjackGame.Client\\ViewModels\\LocalBlackjackGame.cs",
+              "ToolTip": "C:\\Users\\flore\\Documents\\GitHub\\BlackJack\\BlackjackGame\\BlackjackGame.Client\\ViewModels\\LocalBlackjackGame.cs",
+              "RelativeToolTip": "BlackjackGame.Client\\ViewModels\\LocalBlackjackGame.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAO4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T21:35:48.412Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AssemblyInfo.cs",
+              "DocumentMoniker": "C:\\Users\\flore\\Documents\\GitHub\\BlackJack\\BlackjackGame\\BlackjackGame.Client\\AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "BlackjackGame.Client\\AssemblyInfo.cs",
+              "ToolTip": "C:\\Users\\flore\\Documents\\GitHub\\BlackJack\\BlackjackGame\\BlackjackGame.Client\\AssemblyInfo.cs",
+              "RelativeToolTip": "BlackjackGame.Client\\AssemblyInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T21:33:23.039Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\flore\\Documents\\GitHub\\BlackJack\\BlackjackGame\\BlackjackGame.Client\\App.xaml.cs",
+              "RelativeDocumentMoniker": "BlackjackGame.Client\\App.xaml.cs",
+              "ToolTip": "C:\\Users\\flore\\Documents\\GitHub\\BlackJack\\BlackjackGame\\BlackjackGame.Client\\App.xaml.cs",
+              "RelativeToolTip": "BlackjackGame.Client\\App.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T21:34:31.951Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\flore\\Documents\\GitHub\\BlackJack\\BlackjackGame\\BlackjackGame.Client\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "BlackjackGame.Client\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\flore\\Documents\\GitHub\\BlackJack\\BlackjackGame\\BlackjackGame.Client\\MainWindow.xaml.cs",
+              "RelativeToolTip": "BlackjackGame.Client\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T21:33:31.524Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\flore\\Documents\\GitHub\\BlackJack\\BlackjackGame\\BlackjackGame.Client\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "BlackjackGame.Client\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\flore\\Documents\\GitHub\\BlackJack\\BlackjackGame\\BlackjackGame.Client\\MainWindow.xaml",
+              "RelativeToolTip": "BlackjackGame.Client\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-24T21:32:46.766Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BlackjackViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\flore\\Documents\\GitHub\\BlackJack\\BlackjackGame\\BlackjackGame.Client\\ViewModels\\BlackjackViewModel.cs",
+              "RelativeDocumentMoniker": "BlackjackGame.Client\\ViewModels\\BlackjackViewModel.cs",
+              "ToolTip": "C:\\Users\\flore\\Documents\\GitHub\\BlackJack\\BlackjackGame\\BlackjackGame.Client\\ViewModels\\BlackjackViewModel.cs",
+              "RelativeToolTip": "BlackjackGame.Client\\ViewModels\\BlackjackViewModel.cs",
+              "ViewState": "AgIAAEIBAAAAAAAAAAAQwAsAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T21:30:56.558Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "BlackjackClient.cs",
+              "DocumentMoniker": "C:\\Users\\flore\\Documents\\GitHub\\BlackJack\\BlackjackGame\\BlackjackGame.Client\\Services\\BlackjackClient.cs",
+              "RelativeDocumentMoniker": "BlackjackGame.Client\\Services\\BlackjackClient.cs",
+              "ToolTip": "C:\\Users\\flore\\Documents\\GitHub\\BlackJack\\BlackjackGame\\BlackjackGame.Client\\Services\\BlackjackClient.cs",
+              "RelativeToolTip": "BlackjackGame.Client\\Services\\BlackjackClient.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T21:30:04.993Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

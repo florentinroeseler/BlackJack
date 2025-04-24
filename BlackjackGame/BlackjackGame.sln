@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackJackGame.Core", "BlackJackGame.Core\BlackJackGame.Core.csproj", "{0115D023-0975-4B61-9059-A5375A6F7113}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackjackGame.Server", "BlackjackGame.Server\BlackjackGame.Server.csproj", "{05424537-C6D9-4E97-B836-8A2001AE3BF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackjackGame.Client", "BlackjackGame.Client\BlackjackGame.Client.csproj", "{BAEEF9D4-AFC4-448D-A826-BE1778E9672E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackjackGame.Tests", "BlackjackGame.Tests\BlackjackGame.Tests.csproj", "{0E528CC4-2940-45B9-8895-0EE34136EB51}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0115D023-0975-4B61-9059-A5375A6F7113}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0115D023-0975-4B61-9059-A5375A6F7113}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0115D023-0975-4B61-9059-A5375A6F7113}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0115D023-0975-4B61-9059-A5375A6F7113}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05424537-C6D9-4E97-B836-8A2001AE3BF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05424537-C6D9-4E97-B836-8A2001AE3BF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05424537-C6D9-4E97-B836-8A2001AE3BF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05424537-C6D9-4E97-B836-8A2001AE3BF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAEEF9D4-AFC4-448D-A826-BE1778E9672E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAEEF9D4-AFC4-448D-A826-BE1778E9672E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAEEF9D4-AFC4-448D-A826-BE1778E9672E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAEEF9D4-AFC4-448D-A826-BE1778E9672E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E528CC4-2940-45B9-8895-0EE34136EB51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E528CC4-2940-45B9-8895-0EE34136EB51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E528CC4-2940-45B9-8895-0EE34136EB51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E528CC4-2940-45B9-8895-0EE34136EB51}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D1584B6C-98E5-48EB-BA27-651605EC0EC1}
+	EndGlobalSection
+EndGlobal

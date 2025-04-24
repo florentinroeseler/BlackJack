@@ -1,0 +1,106 @@
+// BlackjackGame.Core/Protos/blackjack.proto
+syntax = "proto3";
+
+option csharp_namespace = "BlackjackGame.Core.Protos";
+
+package blackjack;
+
+// Der Blackjack Service definiert die RPC-Methoden für das Spiel
+service BlackjackService {
+  // Verbindung zum Spiel herstellen und Spieler registrieren
+  rpc JoinGame (JoinRequest) returns (JoinResponse);
+  
+  // Einen Einsatz platzieren
+  rpc PlaceBet (BetRequest) returns (GameStateResponse);
+  
+  // Karte ziehen (Hit)
+  rpc Hit (ActionRequest) returns (GameStateResponse);
+  
+  // Keine weiteren Karten nehmen (Stand)
+  rpc Stand (ActionRequest) returns (GameStateResponse);
+  
+  // Status des Spiels abrufen
+  rpc GetGameState (GameStateRequest) returns (GameStateResponse);
+  
+  // Neue Runde starten
+  rpc StartNewRound (NewRoundRequest) returns (GameStateResponse);
+}
+
+// Anfrage, um einem Spiel beizutreten
+message JoinRequest {
+  string player_name = 1;
+}
+
+// Antwort auf Join-Anfrage
+message JoinResponse {
+  bool success = 1;
+  string player_id = 2;
+  string message = 3;
+}
+
+// Anfrage für einen Einsatz
+message BetRequest {
+  string player_id = 1;
+  int32 bet_amount = 2;
+}
+
+// Allgemeine Spieleraktion (Hit/Stand)
+message ActionRequest {
+  string player_id = 1;
+}
+
+// Anfrage für den aktuellen Spielstatus
+message GameStateRequest {
+  string player_id = 1;
+}
+
+// Anfrage für eine neue Runde
+message NewRoundRequest {
+  string player_id = 1;
+}
+
+// Karteninformation
+message CardInfo {
+  int32 rank = 1;
+  int32 suit = 2;
+  bool is_face_up = 3;
+}
+
+// Spielerhand
+message HandInfo {
+  repeated CardInfo cards = 1;
+  int32 value = 2;
+  bool is_busted = 3;
+  bool has_blackjack = 4;
+}
+
+// Spielerinformation
+message PlayerInfo {
+  string name = 1;
+  string id = 2;
+  HandInfo hand = 3;
+  int32 balance = 4;
+  int32 current_bet = 5;
+  bool is_current_player = 6;
+}
+
+// Dealer-Information
+message DealerInfo {
+  HandInfo hand = 1;
+}
+
+// Antwort mit vollständigem Spielstatus
+message GameStateResponse {
+  enum GamePhase {
+    PLACING_BETS = 0;
+    PLAYER_TURN = 1;
+    DEALER_TURN = 2;
+    GAME_OVER = 3;
+  }
+  
+  GamePhase game_phase = 1;
+  DealerInfo dealer = 2;
+  repeated PlayerInfo players = 3;
+  string message = 4;
+  bool success = 5;
+}

@@ -1,0 +1,12 @@
+C:\Users\flore\Documents\GitHub\BlackJack\BlackjackGame\BlackJackGame.Core\bin\Debug\net8.0\BlackJackGame.Core.deps.json
+C:\Users\flore\Documents\GitHub\BlackJack\BlackjackGame\BlackJackGame.Core\bin\Debug\net8.0\BlackJackGame.Core.dll
+C:\Users\flore\Documents\GitHub\BlackJack\BlackjackGame\BlackJackGame.Core\bin\Debug\net8.0\BlackJackGame.Core.pdb
+C:\Users\flore\Documents\GitHub\BlackJack\BlackjackGame\BlackJackGame.Core\obj\Debug\net8.0\BlackJackGame.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\flore\Documents\GitHub\BlackJack\BlackjackGame\BlackJackGame.Core\obj\Debug\net8.0\BlackJackGame.Core.AssemblyInfoInputs.cache
+C:\Users\flore\Documents\GitHub\BlackJack\BlackjackGame\BlackJackGame.Core\obj\Debug\net8.0\BlackJackGame.Core.AssemblyInfo.cs
+C:\Users\flore\Documents\GitHub\BlackJack\BlackjackGame\BlackJackGame.Core\obj\Debug\net8.0\BlackJackGame.Core.csproj.CoreCompileInputs.cache
+C:\Users\flore\Documents\GitHub\BlackJack\BlackjackGame\BlackJackGame.Core\obj\Debug\net8.0\BlackJackGame.Core.dll
+C:\Users\flore\Documents\GitHub\BlackJack\BlackjackGame\BlackJackGame.Core\obj\Debug\net8.0\refint\BlackJackGame.Core.dll
+C:\Users\flore\Documents\GitHub\BlackJack\BlackjackGame\BlackJackGame.Core\obj\Debug\net8.0\BlackJackGame.Core.pdb
+C:\Users\flore\Documents\GitHub\BlackJack\BlackjackGame\BlackJackGame.Core\obj\Debug\net8.0\ref\BlackJackGame.Core.dll
+C:\Users\flore\Documents\GitHub\BlackJack\BlackjackGame\BlackJackGame.Core\obj\Debug\net8.0\BlackJackGame.Core.csproj.AssemblyReference.cache

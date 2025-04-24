@@ -1,0 +1,2 @@
+obj\Debug\net8.0\Protos/Blackjack.cs \
+obj\Debug\net8.0\Protos/BlackjackGrpc.cs: Protos/blackjack.proto
