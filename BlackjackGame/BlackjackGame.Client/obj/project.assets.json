@@ -423,11 +423,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\flore\\Documents\\GitHub\\BlackJack\\BlackjackGame\\BlackjackGame.Client\\BlackjackGame.Client.csproj",
+      "projectUniqueName": "C:\\Users\\flore\\source\\repos\\WebEngineering\\BlackJack\\BlackjackGame\\BlackjackGame.Client\\BlackjackGame.Client.csproj",
       "projectName": "BlackjackGame.Client",
-      "projectPath": "C:\\Users\\flore\\Documents\\GitHub\\BlackJack\\BlackjackGame\\BlackjackGame.Client\\BlackjackGame.Client.csproj",
+      "projectPath": "C:\\Users\\flore\\source\\repos\\WebEngineering\\BlackJack\\BlackjackGame\\BlackjackGame.Client\\BlackjackGame.Client.csproj",
       "packagesPath": "C:\\Users\\flore\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\flore\\Documents\\GitHub\\BlackJack\\BlackjackGame\\BlackjackGame.Client\\obj\\",
+      "outputPath": "C:\\Users\\flore\\source\\repos\\WebEngineering\\BlackJack\\BlackjackGame\\BlackjackGame.Client\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -442,14 +442,15 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "projectReferences": {
-            "C:\\Users\\flore\\Documents\\GitHub\\BlackJack\\BlackjackGame\\BlackJackGame.Core\\BlackJackGame.Core.csproj": {
-              "projectPath": "C:\\Users\\flore\\Documents\\GitHub\\BlackJack\\BlackjackGame\\BlackJackGame.Core\\BlackJackGame.Core.csproj"
+            "C:\\Users\\flore\\source\\repos\\WebEngineering\\BlackJack\\BlackjackGame\\BlackJackGame.Core\\BlackJackGame.Core.csproj": {
+              "projectPath": "C:\\Users\\flore\\source\\repos\\WebEngineering\\BlackJack\\BlackjackGame\\BlackJackGame.Core\\BlackJackGame.Core.csproj"
             }
           }
         }

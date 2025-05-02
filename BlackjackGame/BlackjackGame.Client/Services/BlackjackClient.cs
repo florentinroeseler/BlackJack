@@ -23,7 +23,7 @@ namespace BlackjackGame.Client.Services
         private readonly BlackjackService.BlackjackServiceClient _client;
         private string _playerId;
 
-        public BlackjackClient(string serverAddress = "https://localhost:5001")
+        public BlackjackClient(string serverAddress = "http://localhost:5001")
         {
             // SSL/TLS-Validierung für lokale Entwicklung deaktivieren
             var httpHandler = new System.Net.Http.HttpClientHandler

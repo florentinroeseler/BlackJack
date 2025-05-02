@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4qutin8/s+A=",
+  "dgSpecHash": "aJihktOGq/g=",
   "success": true,
-  "projectFilePath": "C:\\Users\\flore\\Documents\\GitHub\\BlackJack\\BlackjackGame\\BlackjackGame.Client\\BlackjackGame.Client.csproj",
+  "projectFilePath": "C:\\Users\\flore\\source\\repos\\WebEngineering\\BlackJack\\BlackjackGame\\BlackjackGame.Client\\BlackjackGame.Client.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\flore\\.nuget\\packages\\google.protobuf\\3.30.2\\google.protobuf.3.30.2.nupkg.sha512",
     "C:\\Users\\flore\\.nuget\\packages\\grpc.core\\2.46.6\\grpc.core.2.46.6.nupkg.sha512",

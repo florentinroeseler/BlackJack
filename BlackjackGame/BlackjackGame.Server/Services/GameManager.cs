@@ -13,14 +13,14 @@ namespace BlackjackGame.Server.Services
 {
     public class GameManager
     {
-        private readonly ConcurrentDictionary<string, BlackjackGame> games = new ConcurrentDictionary<string, BlackjackGame>();
+        private readonly ConcurrentDictionary<string, BlackjackGameEngine> games = new ConcurrentDictionary<string, BlackjackGameEngine>();
         private readonly ConcurrentDictionary<string, string> playerGameMapping = new ConcurrentDictionary<string, string>();
         private readonly object gameLock = new object();
 
         public string CreateGame(bool isTwoPlayerMode)
         {
             string gameId = Guid.NewGuid().ToString();
-            var game = new BlackjackGame(isTwoPlayerMode);
+            var game = new BlackjackGameEngine(isTwoPlayerMode);
             games[gameId] = game;
             return gameId;
         }
@@ -53,11 +53,11 @@ namespace BlackjackGame.Server.Services
             }
         }
 
-        public BlackjackGame GetGameForPlayer(string playerId)
+        public BlackjackGameEngine GetGameForPlayer(string playerId)
         {
             if (playerGameMapping.TryGetValue(playerId, out string gameId))
             {
-                if (games.TryGetValue(gameId, out BlackjackGame game))
+                if (games.TryGetValue(gameId, out BlackjackGameEngine game))
                 {
                     return game;
                 }
@@ -82,7 +82,7 @@ namespace BlackjackGame.Server.Services
         {
             if (playerGameMapping.TryRemove(playerId, out string gameId))
             {
-                if (games.TryGetValue(gameId, out BlackjackGame game))
+                if (games.TryGetValue(gameId, out BlackjackGameEngine game))
                 {
                     // Wenn kein Spieler mehr im Spiel ist, entferne das Spiel
                     bool removeGame = false;

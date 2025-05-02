@@ -1,5 +1,4 @@
-﻿
-// BlackjackGame.Server/Services/BlackjackServiceImpl.cs
+﻿// BlackjackGame.Server/Services/BlackjackServiceImpl.cs
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,8 +6,6 @@ using Grpc.Core;
 using BlackjackGame.Core.Game;
 using BlackjackGame.Core.Models;
 using BlackjackGame.Core.Protos;
-using Microsoft.AspNetCore.Identity.Data;
-using System.Dynamic;
 
 namespace BlackjackGame.Server.Services
 {
@@ -187,7 +184,7 @@ namespace BlackjackGame.Server.Services
             }
         }
 
-        private GameStateResponse CreateGameStateResponse(BlackjackGame game, string playerId)
+        private GameStateResponse CreateGameStateResponse(BlackjackGameEngine game, string playerId)
         {
             var response = new GameStateResponse
             {
@@ -208,7 +205,7 @@ namespace BlackjackGame.Server.Services
             return response;
         }
 
-        private string GetStateMessage(BlackjackGame game)
+        private string GetStateMessage(BlackjackGameEngine game)
         {
             switch (game.State)
             {

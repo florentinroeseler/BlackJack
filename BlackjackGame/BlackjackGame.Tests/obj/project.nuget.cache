@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fAysZdsB9bs=",
+  "dgSpecHash": "vtvYLyU6iAo=",
   "success": true,
-  "projectFilePath": "C:\\Users\\flore\\Documents\\GitHub\\BlackJack\\BlackjackGame\\BlackjackGame.Tests\\BlackjackGame.Tests.csproj",
+  "projectFilePath": "C:\\Users\\flore\\source\\repos\\WebEngineering\\BlackJack\\BlackjackGame\\BlackjackGame.Tests\\BlackjackGame.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\flore\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
     "C:\\Users\\flore\\.nuget\\packages\\google.protobuf\\3.30.2\\google.protobuf.3.30.2.nupkg.sha512",
