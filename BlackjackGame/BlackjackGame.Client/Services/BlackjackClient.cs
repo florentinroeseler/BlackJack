@@ -132,5 +132,8 @@ namespace BlackjackGame.Client.Services
         {
             _channel?.Dispose();
         }
+
+        // In BlackjackClient.cs
+        public string PlayerId => _playerId;
     }
 }

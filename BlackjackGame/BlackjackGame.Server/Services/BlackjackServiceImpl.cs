@@ -1,6 +1,5 @@
 ﻿// BlackjackGame.Server/Services/BlackjackServiceImpl.cs
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 using Grpc.Core;
 using BlackjackGame.Core.Game;
@@ -16,11 +15,42 @@ namespace BlackjackGame.Server.Services
         public BlackjackServiceImpl(GameManager gameManager)
         {
             _gameManager = gameManager;
+            Console.WriteLine("BlackjackServiceImpl initialisiert");
+        }
+
+        private void Debug(string message)
+        {
+            Console.WriteLine($"DEBUG: {message}");
         }
 
         public override Task<JoinResponse> JoinGame(JoinRequest request, ServerCallContext context)
         {
+            Debug($"JoinGame: PlayerName={request.PlayerName}");
+
             string playerId = _gameManager.JoinGame(request.PlayerName);
+
+            Debug($"Spieler verbunden: ID={playerId}, Name={request.PlayerName}");
+
+            // Prüfe aktuelle Konfiguration
+            var game = _gameManager.GetGameForPlayer(playerId);
+            if (game != null)
+            {
+                Debug($"Nach JoinGame: Spiel gefunden für PlayerId {playerId}");
+                Debug($"Player1: ID={game.Player1?.Id ?? "null"}, Name={game.Player1?.Name ?? "null"}");
+                if (game.Player2 != null)
+                {
+                    Debug($"Player2: ID={game.Player2?.Id ?? "null"}, Name={game.Player2?.Name ?? "null"}");
+                }
+                else
+                {
+                    Debug("Player2 ist null");
+                }
+                Debug($"CurrentPlayer: {game.CurrentPlayer?.Name ?? "null"}");
+            }
+            else
+            {
+                Debug($"FEHLER: Kein Spiel gefunden für PlayerId {playerId} nach JoinGame!");
+            }
 
             return Task.FromResult(new JoinResponse
             {
@@ -32,38 +62,78 @@ namespace BlackjackGame.Server.Services
 
         public override Task<GameStateResponse> PlaceBet(BetRequest request, ServerCallContext context)
         {
+            Debug($"PlaceBet: PlayerId={request.PlayerId}, Amount={request.BetAmount}");
+
             var game = _gameManager.GetGameForPlayer(request.PlayerId);
             if (game == null)
             {
+                Debug("Spiel nicht gefunden!");
                 return Task.FromResult(CreateErrorResponse("Game not found"));
             }
 
-            // Identifiziere den aktuellen Spieler und platziere den Einsatz
-            lock (game) // Thread-sicher machen
+            lock (game)
             {
+                var p1Id = game.Player1?.Id ?? "null";
+                var p1Name = game.Player1?.Name ?? "null";
+                var p2Id = game.Player2?.Id ?? "null";
+                var p2Name = game.Player2?.Name ?? "null";
+                var currentPlayerName = game.CurrentPlayer?.Name ?? "null";
+
+                Debug($"Spielstatus: {game.State}");
+                Debug($"Player1: ID={p1Id}, Name={p1Name}");
+                Debug($"Player2: ID={p2Id}, Name={p2Name}");
+                Debug($"CurrentPlayer: {currentPlayerName}");
+
                 if (game.State != GameState.PlacingBets)
                 {
+                    Debug($"Falscher Spielstatus: {game.State}");
                     return Task.FromResult(CreateErrorResponse("Cannot place bet at this time"));
                 }
 
                 Player currentPlayer = null;
-                if (game.Player1.Name == request.PlayerId)
+
+                // Erster Vergleich: Request PlayerId mit Player1.Id
+                Debug($"Vergleiche Request.PlayerId={request.PlayerId} mit Player1.Id={p1Id}");
+                bool match1 = (game.Player1?.Id == request.PlayerId);
+                Debug($"Match mit Player1.Id: {match1}");
+
+                if (match1)
                 {
                     currentPlayer = game.Player1;
+                    Debug("Spieler 1 identifiziert");
                 }
-                else if (game.IsTwoPlayerMode && game.Player2?.Name == request.PlayerId)
+                else if (game.IsTwoPlayerMode && game.Player2 != null)
                 {
-                    currentPlayer = game.Player2;
+                    // Zweiter Vergleich: Request PlayerId mit Player2.Id
+                    Debug($"Vergleiche Request.PlayerId={request.PlayerId} mit Player2.Id={p2Id}");
+                    bool match2 = (game.Player2?.Id == request.PlayerId);
+                    Debug($"Match mit Player2.Id: {match2}");
+
+                    if (match2)
+                    {
+                        currentPlayer = game.Player2;
+                        Debug("Spieler 2 identifiziert");
+                    }
                 }
 
-                if (currentPlayer == null || currentPlayer != game.CurrentPlayer)
+                if (currentPlayer == null)
                 {
+                    Debug("Kein passender Spieler gefunden");
+                    return Task.FromResult(CreateErrorResponse("Player not found"));
+                }
+
+                bool isCurrentPlayer = (currentPlayer == game.CurrentPlayer);
+                Debug($"Ist aktueller Spieler: {isCurrentPlayer}");
+
+                if (!isCurrentPlayer)
+                {
+                    Debug($"Nicht am Zug. CurrentPlayer={game.CurrentPlayer?.Name}, RequestPlayer={currentPlayer.Name}");
                     return Task.FromResult(CreateErrorResponse("Not your turn"));
                 }
 
+                Debug($"Einsatz platziert: {request.BetAmount} für Spieler {currentPlayer.Name}");
                 currentPlayer.PlaceBet(request.BetAmount);
 
-                // Die PlaceBet-Methode im Spiel fortsetzen
                 game.PlaceBet(request.BetAmount);
 
                 return Task.FromResult(CreateGameStateResponse(game, request.PlayerId));
@@ -86,11 +156,11 @@ namespace BlackjackGame.Server.Services
                 }
 
                 Player currentPlayer = null;
-                if (game.Player1.Name == request.PlayerId)
+                if (game.Player1.Id == request.PlayerId) // Geändert: Vergleiche mit Id statt Name
                 {
                     currentPlayer = game.Player1;
                 }
-                else if (game.IsTwoPlayerMode && game.Player2?.Name == request.PlayerId)
+                else if (game.IsTwoPlayerMode && game.Player2?.Id == request.PlayerId) // Geändert: Vergleiche mit Id statt Name
                 {
                     currentPlayer = game.Player2;
                 }
@@ -122,11 +192,11 @@ namespace BlackjackGame.Server.Services
                 }
 
                 Player currentPlayer = null;
-                if (game.Player1.Name == request.PlayerId)
+                if (game.Player1.Id == request.PlayerId) // Geändert: Vergleiche mit Id statt Name
                 {
                     currentPlayer = game.Player1;
                 }
-                else if (game.IsTwoPlayerMode && game.Player2?.Name == request.PlayerId)
+                else if (game.IsTwoPlayerMode && game.Player2?.Id == request.PlayerId) // Geändert: Vergleiche mit Id statt Name
                 {
                     currentPlayer = game.Player2;
                 }
@@ -243,8 +313,8 @@ namespace BlackjackGame.Server.Services
         {
             var playerInfo = new PlayerInfo
             {
-                Name = player.Name,
-                Id = player.Name, // Verwende Name als ID
+                Name = player.Name, // Hier den Namen des Spielers anzeigen
+                Id = player.Id,     // Geändert: Verwende die Id anstelle des Namens
                 Balance = player.Balance,
                 CurrentBet = player.CurrentBet,
                 IsCurrentPlayer = isCurrentPlayer,

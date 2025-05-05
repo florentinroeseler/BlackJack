@@ -36,6 +36,111 @@ namespace BlackjackGame.Client.ViewModels
         public ICommand StartSinglePlayerGameCommand { get; }
 
         // Properties
+
+        // In BlackjackViewModel.cs - neue Properties hinzufügen
+
+        // Status-Farbe für visuelle Hinweise
+        private string _statusColor = "White";
+        public string StatusColor
+        {
+            get => _statusColor;
+            set
+            {
+                _statusColor = value;
+                OnPropertyChanged(nameof(StatusColor));
+            }
+        }
+
+        // Information über den aktuellen Spieler
+        private string _currentPlayerInfo = string.Empty;
+        public string CurrentPlayerInfo
+        {
+            get => _currentPlayerInfo;
+            set
+            {
+                _currentPlayerInfo = value;
+                OnPropertyChanged(nameof(CurrentPlayerInfo));
+            }
+        }
+
+        // Tooltip-Properties für Buttons
+        public string PlaceBetTooltip
+        {
+            get
+            {
+                if (!IsConnected)
+                    return "Du musst zuerst dem Spiel beitreten";
+                if (_gameState?.GamePhase != GameStateResponse.Types.GamePhase.PlacingBets)
+                    return "Du kannst nur während der Einsatzphase setzen";
+                if (IsTwoPlayerMode && !IsPlayerTurn)
+                    return "Du bist nicht am Zug";
+                return "Setze deinen Einsatz";
+            }
+        }
+
+        public string HitTooltip
+        {
+            get
+            {
+                if (!IsConnected)
+                    return "Du musst zuerst dem Spiel beitreten";
+                if (IsTwoPlayerMode)
+                {
+                    if (_gameState?.GamePhase != GameStateResponse.Types.GamePhase.PlayerTurn)
+                        return "Du kannst nur während deines Zuges eine Karte nehmen";
+                    if (!IsPlayerTurn)
+                        return "Du bist nicht am Zug";
+                }
+                else
+                {
+                    if (_localGame.GetGameState() != GameState.PlayerTurn)
+                        return "Du kannst nur während deines Zuges eine Karte nehmen";
+                }
+                return "Nimm eine weitere Karte";
+            }
+        }
+
+        public string StandTooltip
+        {
+            get
+            {
+                if (!IsConnected)
+                    return "Du musst zuerst dem Spiel beitreten";
+                if (IsTwoPlayerMode)
+                {
+                    if (_gameState?.GamePhase != GameStateResponse.Types.GamePhase.PlayerTurn)
+                        return "Du kannst nur während deines Zuges stehen bleiben";
+                    if (!IsPlayerTurn)
+                        return "Du bist nicht am Zug";
+                }
+                else
+                {
+                    if (_localGame.GetGameState() != GameState.PlayerTurn)
+                        return "Du kannst nur während deines Zuges stehen bleiben";
+                }
+                return "Keine weiteren Karten nehmen";
+            }
+        }
+
+        public string StartNewRoundTooltip
+        {
+            get
+            {
+                if (!IsConnected)
+                    return "Du musst zuerst dem Spiel beitreten";
+                if (IsTwoPlayerMode)
+                {
+                    if (_gameState?.GamePhase != GameStateResponse.Types.GamePhase.GameOver)
+                        return "Du kannst erst eine neue Runde starten, wenn die aktuelle beendet ist";
+                }
+                else
+                {
+                    if (_localGame.GetGameState() != GameState.GameOver)
+                        return "Du kannst erst eine neue Runde starten, wenn die aktuelle beendet ist";
+                }
+                return "Starte eine neue Runde";
+            }
+        }
         public bool IsConnected
         {
             get => _isConnected;
@@ -105,28 +210,39 @@ namespace BlackjackGame.Client.ViewModels
 
         public BlackjackViewModel()
         {
+            // Generiere einen eindeutigen Spielernamen
+            _playerName = "Player " + Guid.NewGuid().ToString().Substring(0, 4);
             _client = new BlackjackClient();
             _localGame = new LocalBlackjackGame();
 
-            // Initialize commands
+            // Im BlackjackViewModel.cs - Konstruktor
             JoinGameCommand = new RelayCommand(async () => await JoinGame(), () => CanJoinGame);
+
+            // Im BlackjackViewModel-Konstruktor
             PlaceBetCommand = new RelayCommand(PlaceBetAction, () =>
-                (_gameState?.GamePhase == GameStateResponse.Types.GamePhase.PlacingBets && IsConnected && IsTwoPlayerMode) ||
+                // Zwei-Spieler-Modus: Nur wenn Einsatzphase UND Spieler am Zug
+                (_gameState?.GamePhase == GameStateResponse.Types.GamePhase.PlacingBets && IsConnected && IsTwoPlayerMode && IsPlayerTurn) ||
+                // Einzel-Spieler-Modus
                 (_localGame.GetGameState() == GameState.PlacingBets && IsConnected && !IsTwoPlayerMode));
 
             HitCommand = new RelayCommand(HitAction, () =>
+                // Zwei-Spieler-Modus: Nur wenn Spielphase UND Spieler am Zug
                 (_gameState?.GamePhase == GameStateResponse.Types.GamePhase.PlayerTurn && IsPlayerTurn && IsTwoPlayerMode) ||
+                // Einzel-Spieler-Modus
                 (_localGame.GetGameState() == GameState.PlayerTurn && !IsTwoPlayerMode));
 
             StandCommand = new RelayCommand(StandAction, () =>
+                // Zwei-Spieler-Modus: Nur wenn Spielphase UND Spieler am Zug
                 (_gameState?.GamePhase == GameStateResponse.Types.GamePhase.PlayerTurn && IsPlayerTurn && IsTwoPlayerMode) ||
+                // Einzel-Spieler-Modus
                 (_localGame.GetGameState() == GameState.PlayerTurn && !IsTwoPlayerMode));
 
             StartNewRoundCommand = new RelayCommand(StartNewRoundAction, () =>
+                // Beide Modi: Nur wenn Spielende
                 (_gameState?.GamePhase == GameStateResponse.Types.GamePhase.GameOver && IsTwoPlayerMode) ||
                 (_localGame.GetGameState() == GameState.GameOver && !IsTwoPlayerMode));
 
-            StartSinglePlayerGameCommand = new RelayCommand(StartSinglePlayerGame);
+            StartSinglePlayerGameCommand = new RelayCommand(StartSinglePlayerGame, () => !IsConnected);
 
             // Event-Handler für lokales Spiel registrieren
             _localGame.GameStateChanged += OnLocalGameStateChanged;
@@ -136,13 +252,19 @@ namespace BlackjackGame.Client.ViewModels
             StatusMessage = "Welcome to Blackjack! Choose game mode to start.";
         }
 
+        private string _playerId; // Neue Variable hinzufügen
+
         private async Task JoinGame()
         {
             if (await _client.JoinGame(PlayerName))
             {
                 IsConnected = true;
                 IsTwoPlayerMode = true;
-                StatusMessage = "Connected to server. Waiting for game to start...";
+
+                // Hole die PlayerId aus dem Client
+                _playerId = _client.PlayerId; // Füge einen Getter für _playerId im BlackjackClient hinzu
+
+                StatusMessage = $"Connected to server as {PlayerName}. Waiting for game to start...";
 
                 // Start polling for game state
                 _ = StartGameStatePoll();
@@ -171,19 +293,64 @@ namespace BlackjackGame.Client.ViewModels
             }
         }
 
+        // Und die UpdateGameStateUI-Methode anpassen
         private void UpdateGameStateUI(GameStateResponse state)
         {
             _gameState = state;
 
             StatusMessage = state.Message;
 
+            // Prüfe, ob die Antwort erfolgreich war
+            if (!state.Success)
+            {
+                StatusColor = "Red"; // Fehler rot anzeigen
+                return;
+            }
 
-            // With this code:
-            var currentPlayer = state.Players.FirstOrDefault(p => p.IsCurrentPlayer);
-            IsPlayerTurn = currentPlayer?.Id == state.Players[0].Id; // Assume first player is local player
+            // Nur weitermachen, wenn alle notwendigen Daten vorhanden sind
+            if (state.Dealer != null && state.Players != null && state.Players.Count > 0)
+            {
+                // Finde den lokalen Spieler anhand der ID
+                var localPlayer = state.Players.FirstOrDefault(p => p.Id == _client.PlayerId);
+                var currentPlayer = state.Players.FirstOrDefault(p => p.IsCurrentPlayer);
 
-            // Update cards
-            UpdateCards(state);
+                // Spielerzug-Status
+                IsPlayerTurn = localPlayer != null && localPlayer.IsCurrentPlayer;
+
+                // Aktueller Spieler Info
+                if (currentPlayer != null)
+                {
+                    if (currentPlayer.Id == _client.PlayerId)
+                    {
+                        CurrentPlayerInfo = "Du bist am Zug!";
+                        StatusColor = "LimeGreen"; // Eigener Zug grün anzeigen
+                    }
+                    else
+                    {
+                        CurrentPlayerInfo = $"{currentPlayer.Name} ist am Zug";
+                        StatusColor = "White"; // Standard weiß
+                    }
+                }
+                else
+                {
+                    CurrentPlayerInfo = string.Empty;
+                    StatusColor = "White";
+                }
+
+                // Update cards
+                UpdateCards(state);
+            }
+            else
+            {
+                StatusColor = "White";
+                CurrentPlayerInfo = string.Empty;
+            }
+
+            // Aktualisiere Tool-Tip-Properties
+            OnPropertyChanged(nameof(PlaceBetTooltip));
+            OnPropertyChanged(nameof(HitTooltip));
+            OnPropertyChanged(nameof(StandTooltip));
+            OnPropertyChanged(nameof(StartNewRoundTooltip));
 
             // Update UI state based on game phase
             OnPropertyChanged(nameof(PlaceBetCommand));
@@ -191,7 +358,7 @@ namespace BlackjackGame.Client.ViewModels
             OnPropertyChanged(nameof(StandCommand));
             OnPropertyChanged(nameof(StartNewRoundCommand));
         }
-
+        // In BlackjackViewModel.cs - UpdateCards-Methode ändern
         private void UpdateCards(GameStateResponse state)
         {
             // Update dealer cards
@@ -201,21 +368,25 @@ namespace BlackjackGame.Client.ViewModels
                 DealerCards.Add(new CardViewModel(card));
             }
 
-            // Update player cards
+            // Finde den lokalen Spieler anhand der ID
+            var localPlayer = state.Players.FirstOrDefault(p => p.Id == _playerId);
+
+            // Update local player cards
             PlayerCards.Clear();
-            if (state.Players.Count > 0)
+            if (localPlayer != null)
             {
-                foreach (var card in state.Players[0].Hand.Cards)
+                foreach (var card in localPlayer.Hand.Cards)
                 {
                     PlayerCards.Add(new CardViewModel(card));
                 }
             }
 
-            // Update player 2 cards if in two player mode
+            // Update other player cards
             Player2Cards.Clear();
-            if (state.Players.Count > 1)
+            var otherPlayer = state.Players.FirstOrDefault(p => p.Id != _playerId);
+            if (otherPlayer != null)
             {
-                foreach (var card in state.Players[1].Hand.Cards)
+                foreach (var card in otherPlayer.Hand.Cards)
                 {
                     Player2Cards.Add(new CardViewModel(card));
                 }

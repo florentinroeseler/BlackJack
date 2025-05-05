@@ -6,6 +6,18 @@ namespace BlackjackGame.Core.Models
 {
     public class Player
     {
+        private string _id = string.Empty;
+
+
+        public string Id
+        {
+            get => _id;
+            set
+            {
+                // Akzeptiere auch leere IDs für die Initialisierung
+                _id = value ?? string.Empty;
+            }
+        }
         public string Name { get; set; }
         public Hand Hand { get; } = new Hand();
         public int Balance { get; set; }
@@ -13,6 +25,7 @@ namespace BlackjackGame.Core.Models
 
         public Player(string name, int initialBalance = 1000)
         {
+            Id = string.Empty;
             Name = name;
             Balance = initialBalance;
         }

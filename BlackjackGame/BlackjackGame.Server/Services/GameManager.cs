@@ -1,13 +1,8 @@
-﻿
-// BlackjackGame.Server/Services/GameManager.cs
+﻿// BlackjackGame.Server/Services/GameManager.cs
 using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Dynamic;
 using BlackjackGame.Core.Game;
 using BlackjackGame.Core.Models;
-using Grpc.Core;
-using Microsoft.AspNetCore.Identity.Data;
 
 namespace BlackjackGame.Server.Services
 {
@@ -17,11 +12,22 @@ namespace BlackjackGame.Server.Services
         private readonly ConcurrentDictionary<string, string> playerGameMapping = new ConcurrentDictionary<string, string>();
         private readonly object gameLock = new object();
 
+        public GameManager()
+        {
+            Console.WriteLine("GameManager initialisiert");
+        }
+
+        private void Debug(string message)
+        {
+            Console.WriteLine($"MANAGER: {message}");
+        }
+
         public string CreateGame(bool isTwoPlayerMode)
         {
             string gameId = Guid.NewGuid().ToString();
             var game = new BlackjackGameEngine(isTwoPlayerMode);
             games[gameId] = game;
+            Debug($"Neues Spiel erstellt: ID={gameId}, TwoPlayerMode={isTwoPlayerMode}");
             return gameId;
         }
 
@@ -30,25 +36,55 @@ namespace BlackjackGame.Server.Services
             lock (gameLock)
             {
                 string playerId = Guid.NewGuid().ToString();
+                Debug($"Spieler versucht beizutreten: Name={playerName}, ID={playerId}");
 
-                // Suche nach vorhandenen Spielen mit einem offenen Platz
+                // Suche nach existierenden Spielen mit einem freien Platz
                 foreach (var gameEntry in games)
                 {
                     var game = gameEntry.Value;
-                    if (game.IsTwoPlayerMode && game.Player2 == null)
+                    Debug($"Prüfe Spiel: {gameEntry.Key}, IsTwoPlayerMode={game.IsTwoPlayerMode}, Player2 existiert: {game.Player2 != null}");
+
+                    if (game.IsTwoPlayerMode && (game.Player2 == null || string.IsNullOrEmpty(game.Player2.Id)))
                     {
-                        // Füge Spieler dem vorhandenen Spiel hinzu
-                        game.Player2 = new Player(playerName);
+                        // Wenn Player2 null ist, erstelle ihn
+                        if (game.Player2 == null)
+                        {
+                            game.Player2 = new Player(playerName);
+                        }
+                        else
+                        {
+                            // Sonst aktualisiere vorhandenen Player2
+                            game.Player2.Name = playerName;
+                        }
+
+                        // Setze ID DIREKT und stelle sicher, dass sie korrekt gesetzt ist
+                        Debug($"Player2 vor ID-Zuweisung: {game.Player2.Id ?? "null"}");
+                        game.Player2.Id = playerId;
+                        Debug($"Player2 nach ID-Zuweisung: {game.Player2.Id ?? "null"}");
+
                         playerGameMapping[playerId] = gameEntry.Key;
+
+                        Debug($"Spieler 2 dem Spiel {gameEntry.Key} hinzugefügt: ID={playerId}, Name={playerName}");
+                        Debug($"Player1: ID={game.Player1?.Id ?? "null"}, Name={game.Player1?.Name ?? "null"}");
+                        Debug($"Player2: ID={game.Player2?.Id ?? "null"}, Name={game.Player2?.Name ?? "null"}");
+                        Debug($"CurrentPlayer: {game.CurrentPlayer?.Name ?? "null"}");
+
                         return playerId;
                     }
                 }
 
-                // Erstelle ein neues Spiel
+                // Erstelle ein neues Spiel für den ersten Spieler
                 string gameId = CreateGame(true);
                 var newGame = games[gameId];
+
+                // Setze Daten für Spieler 1
                 newGame.Player1.Name = playerName;
+                newGame.Player1.Id = playerId;
                 playerGameMapping[playerId] = gameId;
+
+                Debug($"Neues Spiel mit Spieler 1 erstellt: GameID={gameId}, PlayerID={playerId}, Name={playerName}");
+                Debug($"Player1: ID={newGame.Player1?.Id ?? "null"}, Name={newGame.Player1?.Name ?? "null"}");
+
                 return playerId;
             }
         }
@@ -70,9 +106,10 @@ namespace BlackjackGame.Server.Services
             var game = GetGameForPlayer(playerId);
             if (game == null) return null;
 
-            if (game.Player1.Name == playerId)
+            // Geändert: Vergleiche mit Id statt Name
+            if (game.Player1.Id == playerId)
                 return game.Player1;
-            else if (game.IsTwoPlayerMode && game.Player2?.Name == playerId)
+            else if (game.IsTwoPlayerMode && game.Player2?.Id == playerId)
                 return game.Player2;
 
             return null;
@@ -87,7 +124,8 @@ namespace BlackjackGame.Server.Services
                     // Wenn kein Spieler mehr im Spiel ist, entferne das Spiel
                     bool removeGame = false;
 
-                    if (game.Player1.Name == playerId)
+                    // Geändert: Vergleiche mit Id statt Name
+                    if (game.Player1.Id == playerId)
                     {
                         if (!game.IsTwoPlayerMode || game.Player2 == null)
                             removeGame = true;
@@ -98,7 +136,7 @@ namespace BlackjackGame.Server.Services
                             game.Player2 = null;
                         }
                     }
-                    else if (game.IsTwoPlayerMode && game.Player2?.Name == playerId)
+                    else if (game.IsTwoPlayerMode && game.Player2?.Id == playerId)
                     {
                         game.Player2 = null;
                     }

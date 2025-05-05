@@ -35,6 +35,12 @@ C:\Users\flore\Documents\GitHub\BlackJack\BlackjackGame\BlackjackGame.Client\obj
 C:\Users\flore\Documents\GitHub\BlackJack\BlackjackGame\BlackjackGame.Client\obj\Debug\net8.0-windows\BlackjackGame.Client.pdb
 C:\Users\flore\Documents\GitHub\BlackJack\BlackjackGame\BlackjackGame.Client\obj\Debug\net8.0-windows\BlackjackGame.Client.genruntimeconfig.cache
 C:\Users\flore\Documents\GitHub\BlackJack\BlackjackGame\BlackjackGame.Client\obj\Debug\net8.0-windows\ref\BlackjackGame.Client.dll
+C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Client\obj\Debug\net8.0-windows\BlackjackGame.Client.csproj.AssemblyReference.cache
+C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Client\obj\Debug\net8.0-windows\MainWindow.g.cs
+C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Client\obj\Debug\net8.0-windows\App.g.cs
+C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Client\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Client\obj\Debug\net8.0-windows\BlackjackGame.Client_MarkupCompile.cache
+C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Client\obj\Debug\net8.0-windows\BlackjackGame.Client_MarkupCompile.lref
 C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Client\bin\Debug\net8.0-windows\BlackjackGame.Client.exe
 C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Client\bin\Debug\net8.0-windows\BlackjackGame.Client.deps.json
 C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Client\bin\Debug\net8.0-windows\BlackjackGame.Client.runtimeconfig.json
@@ -53,12 +59,6 @@ C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame
 C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Client\bin\Debug\net8.0-windows\runtimes\win-x86\native\grpc_csharp_ext.x86.dll
 C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Client\bin\Debug\net8.0-windows\BlackJackGame.Core.dll
 C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Client\bin\Debug\net8.0-windows\BlackJackGame.Core.pdb
-C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Client\obj\Debug\net8.0-windows\BlackjackGame.Client.csproj.AssemblyReference.cache
-C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Client\obj\Debug\net8.0-windows\MainWindow.g.cs
-C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Client\obj\Debug\net8.0-windows\App.g.cs
-C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Client\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
-C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Client\obj\Debug\net8.0-windows\BlackjackGame.Client_MarkupCompile.cache
-C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Client\obj\Debug\net8.0-windows\BlackjackGame.Client_MarkupCompile.lref
 C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Client\obj\Debug\net8.0-windows\App.baml
 C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Client\obj\Debug\net8.0-windows\MainWindow.baml
 C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Client\obj\Debug\net8.0-windows\BlackjackGame.Client.g.resources

@@ -11,5 +11,14 @@
         "Action": "Start"
       }
     ]
+  },
+  {
+    "Name": "Neues Profil (1)",
+    "Projects": [
+      {
+        "Path": "BlackjackGame.Client\\BlackjackGame.Client.csproj",
+        "Action": "Start"
+      }
+    ]
   }
 ]
