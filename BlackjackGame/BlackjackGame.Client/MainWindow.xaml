@@ -5,12 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BlackjackGame.Client"
         xmlns:viewModels="clr-namespace:BlackjackGame.Client.ViewModels"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="Blackjack Game" Height="650" Width="900"
         MinHeight="500" MinWidth="800">
 
     <Window.Resources>
         <viewModels:BlackjackViewModel x:Key="ViewModel" />
+        <!-- Verwende den eingebauten BooleanToVisibilityConverter -->
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
+        <!-- Style für Buttons mit visuellem Feedback -->
+        <Style x:Key="GameButtonStyle" TargetType="Button">
+            <Setter Property="Margin" Value="5,0" />
+            <Setter Property="Width" Value="80" />
+            <Setter Property="Height" Value="30" />
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.5" />
+                    <Setter Property="Background" Value="#DDDDDD" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
 
     <Grid DataContext="{StaticResource ViewModel}">
@@ -26,13 +42,15 @@
                 <Button Content="Single Player" 
                         Command="{Binding StartSinglePlayerGameCommand}"
                         Width="120" Margin="5"
-                        IsEnabled="{Binding CanJoinGame}"/>
+                        IsEnabled="{Binding CanJoinGame}"
+                        ToolTip="Starte ein Einzelspieler-Spiel" />
                 <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
                     <TextBox Text="{Binding PlayerName}" Width="120" Margin="0,0,5,0"/>
                     <Button Content="Connect to Server" 
                             Command="{Binding JoinGameCommand}" 
                             Width="120" Margin="5"
-                            IsEnabled="{Binding CanJoinGame}"/>
+                            IsEnabled="{Binding CanJoinGame}"
+                            ToolTip="Verbinde dich mit einem Server für ein Mehrspieler-Spiel" />
                 </StackPanel>
             </StackPanel>
         </Border>
@@ -41,6 +59,7 @@
         <Grid Grid.Row="1" Background="#0A6E0A">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
@@ -65,10 +84,17 @@
                 </ItemsControl>
             </StackPanel>
 
+            <!-- Status Banner - NEU -->
+            <Border Grid.Row="1" Background="#333333" Opacity="0.8" Margin="50,10" CornerRadius="5"
+                    Visibility="{Binding IsStatusVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <TextBlock Text="{Binding CurrentPlayerInfo}" FontSize="18" Foreground="White" 
+                           HorizontalAlignment="Center" Padding="10,5" FontWeight="Bold"/>
+            </Border>
+
             <!-- Second Player Area (Only visible in two-player mode) -->
-            <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" 
+            <StackPanel Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" 
                         Visibility="{Binding IsTwoPlayerMode, Converter={StaticResource BooleanToVisibilityConverter}}">
-                <TextBlock Text="Player 2" FontSize="20" Foreground="White" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                <TextBlock Text="{Binding OpponentName}" FontSize="20" Foreground="White" HorizontalAlignment="Center" Margin="0,0,0,10"/>
                 <ItemsControl ItemsSource="{Binding Player2Cards}" HorizontalAlignment="Center">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -87,8 +113,8 @@
             </StackPanel>
 
             <!-- Player Area -->
-            <StackPanel Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="Player 1" FontSize="20" Foreground="White" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+            <StackPanel Grid.Row="3" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="{Binding PlayerName}" FontSize="20" Foreground="White" HorizontalAlignment="Center" Margin="0,0,0,10"/>
                 <ItemsControl ItemsSource="{Binding PlayerCards}" HorizontalAlignment="Center">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -117,7 +143,7 @@
 
                 <!-- Status -->
                 <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center">
-                    <TextBlock Text="{Binding StatusMessage}" FontSize="16" Foreground="White"/>
+                    <TextBlock Text="{Binding StatusMessage}" FontSize="16" Foreground="{Binding StatusColor}" FontWeight="SemiBold"/>
                 </StackPanel>
 
                 <!-- Action Buttons -->
@@ -127,13 +153,26 @@
                         <StackPanel Orientation="Horizontal" Margin="0,0,10,0">
                             <TextBlock Text="Bet:" VerticalAlignment="Center" Foreground="White" Margin="0,0,5,0"/>
                             <TextBox Text="{Binding BetAmount}" Width="50" VerticalAlignment="Center"/>
-                            <Button Content="Place Bet" Command="{Binding PlaceBetCommand}" Width="80" Margin="10,0,0,0"/>
+                            <Button Content="Place Bet" 
+                                    Command="{Binding PlaceBetCommand}" 
+                                    Width="80" Margin="10,0,0,0" 
+                                    Style="{StaticResource GameButtonStyle}"
+                                    ToolTip="{Binding PlaceBetTooltip}"/>
                         </StackPanel>
 
                         <!-- Game Controls -->
-                        <Button Content="Hit" Command="{Binding HitCommand}" Width="80" Margin="5,0"/>
-                        <Button Content="Stand" Command="{Binding StandCommand}" Width="80" Margin="5,0"/>
-                        <Button Content="New Round" Command="{Binding StartNewRoundCommand}" Width="80" Margin="5,0"/>
+                        <Button Content="Hit" 
+                                Command="{Binding HitCommand}" 
+                                Style="{StaticResource GameButtonStyle}"
+                                ToolTip="{Binding HitTooltip}"/>
+                        <Button Content="Stand" 
+                                Command="{Binding StandCommand}" 
+                                Style="{StaticResource GameButtonStyle}"
+                                ToolTip="{Binding StandTooltip}"/>
+                        <Button Content="New Round" 
+                                Command="{Binding StartNewRoundCommand}" 
+                                Style="{StaticResource GameButtonStyle}"
+                                ToolTip="{Binding StartNewRoundTooltip}"/>
                     </StackPanel>
                 </StackPanel>
             </Grid>

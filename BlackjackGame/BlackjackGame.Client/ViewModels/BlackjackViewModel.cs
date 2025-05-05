@@ -37,7 +37,23 @@ namespace BlackjackGame.Client.ViewModels
 
         // Properties
 
+        public bool IsStatusVisible
+        {
+            get => !string.IsNullOrEmpty(_currentPlayerInfo);
+        }
+
         // In BlackjackViewModel.cs - neue Properties hinzufügen
+
+        private string _opponentName = "Player 2";
+        public string OpponentName
+        {
+            get => _opponentName;
+            set
+            {
+                _opponentName = value;
+                OnPropertyChanged(nameof(OpponentName));
+            }
+        }
 
         // Status-Farbe für visuelle Hinweise
         private string _statusColor = "White";
@@ -294,6 +310,7 @@ namespace BlackjackGame.Client.ViewModels
         }
 
         // Und die UpdateGameStateUI-Methode anpassen
+        // 2. Dann aktualisiere die UpdateGameStateUI-Methode, um den Gegnernamen zu setzen
         private void UpdateGameStateUI(GameStateResponse state)
         {
             _gameState = state;
@@ -313,6 +330,13 @@ namespace BlackjackGame.Client.ViewModels
                 // Finde den lokalen Spieler anhand der ID
                 var localPlayer = state.Players.FirstOrDefault(p => p.Id == _client.PlayerId);
                 var currentPlayer = state.Players.FirstOrDefault(p => p.IsCurrentPlayer);
+
+                // Finde den Gegner-Spieler (jeder Spieler außer dem lokalen Spieler)
+                var opponent = state.Players.FirstOrDefault(p => p.Id != _client.PlayerId);
+                if (opponent != null)
+                {
+                    OpponentName = opponent.Name; // Setze den Namen des Gegners
+                }
 
                 // Spielerzug-Status
                 IsPlayerTurn = localPlayer != null && localPlayer.IsCurrentPlayer;
