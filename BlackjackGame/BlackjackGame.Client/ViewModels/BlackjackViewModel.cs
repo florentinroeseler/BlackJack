@@ -36,6 +36,171 @@ namespace BlackjackGame.Client.ViewModels
         public ICommand StartSinglePlayerGameCommand { get; }
 
         // Properties
+        // Füge diese Properties zum BlackjackViewModel.cs hinzu
+
+        // Property für den aktuellen Kontostand
+        public string PlayerBalance
+        {
+            get
+            {
+                if (IsTwoPlayerMode)
+                {
+                    // Im Mehrspielermodus den Kontostand aus dem GameState holen
+                    var localPlayer = _gameState?.Players?.FirstOrDefault(p => p.Id == _client.PlayerId);
+                    return localPlayer != null ? $"{localPlayer.Balance} €" : "0 €";
+                }
+                else
+                {
+                    // Im Einzelspielermodus den Kontostand aus dem LocalGame holen
+                    return $"{_localGame.GetPlayer().Balance} €";
+                }
+            }
+        }
+
+        // Property für den aktuellen Einsatz 
+        public string CurrentBetDisplay
+        {
+            get
+            {
+                if (IsTwoPlayerMode)
+                {
+                    // Im Mehrspielermodus den Einsatz aus dem GameState holen
+                    var localPlayer = _gameState?.Players?.FirstOrDefault(p => p.Id == _client.PlayerId);
+                    return localPlayer != null ? $"{localPlayer.CurrentBet} €" : "0 €";
+                }
+                else
+                {
+                    // Im Einzelspielermodus den Einsatz aus dem LocalGame holen
+                    return $"{_localGame.GetPlayer().CurrentBet} €";
+                }
+            }
+        }
+
+        // Property für das Rundenergebnis (gewonnen/verloren)
+        private string _roundResultInfo = string.Empty;
+        public string RoundResultInfo
+        {
+            get => _roundResultInfo;
+            set
+            {
+                _roundResultInfo = value;
+                OnPropertyChanged(nameof(RoundResultInfo));
+                OnPropertyChanged(nameof(HasRoundResult));
+            }
+        }
+
+        // Property für die Farbe des Rundenergebnisses
+        private string _roundResultColor = "White";
+        public string RoundResultColor
+        {
+            get => _roundResultColor;
+            set
+            {
+                _roundResultColor = value;
+                OnPropertyChanged(nameof(RoundResultColor));
+            }
+        }
+
+        // Property zur Bestimmung, ob ein Rundenergebnis angezeigt werden soll
+        public bool HasRoundResult
+        {
+            get => !string.IsNullOrEmpty(_roundResultInfo);
+        }
+
+        // Methode zum Aktualisieren des Rundenergebnisses
+        private void UpdateRoundResult(int oldBalance, int newBalance)
+        {
+            int difference = newBalance - oldBalance;
+
+            if (difference > 0)
+            {
+                RoundResultInfo = $"Gewonnen: +{difference} €";
+                RoundResultColor = "LimeGreen";
+            }
+            else if (difference < 0)
+            {
+                RoundResultInfo = $"Verloren: {difference} €";
+                RoundResultColor = "Salmon";
+            }
+            else
+            {
+                RoundResultInfo = "Unentschieden (Push)";
+                RoundResultColor = "Gold";
+            }
+
+            // Nach 5 Sekunden automatisch ausblenden
+            Task.Delay(5000).ContinueWith(_ =>
+            {
+                RoundResultInfo = string.Empty;
+            });
+        }
+
+        // Ergänze diese Methode zur LocalGameStateChanged-Event-Behandlung
+
+        private int _previousBalance = 0;
+
+        private void OnLocalGameStateChanged(object sender, GameStateChangedEventArgs e)
+        {
+            if (e.NewState == GameState.GameOver)
+            {
+                var player = _localGame.GetPlayer();
+                int currentBalance = player.Balance;
+
+                // Rundenergebnis aktualisieren, wenn sich der Kontostand geändert hat
+                if (_previousBalance != 0)
+                {
+                    UpdateRoundResult(_previousBalance, currentBalance);
+                }
+
+                _previousBalance = currentBalance;
+            }
+            else if (e.NewState == GameState.PlacingBets)
+            {
+                // Beim Start einer neuen Runde den aktuellen Kontostand speichern
+                _previousBalance = _localGame.GetPlayer().Balance;
+            }
+
+            UpdateLocalGameUI();
+        }
+
+        // Ergänze diese Methode zur UpdateGameStateUI-Methode (direkt nach der Verarbeitung des GameState)
+
+        private void HandleGameStatePhaseChange()
+        {
+            // Nur für den Mehrspielermodus
+            if (IsTwoPlayerMode)
+            {
+                var localPlayer = _gameState?.Players?.FirstOrDefault(p => p.Id == _client.PlayerId);
+
+                if (localPlayer != null && _gameState.GamePhase == GameStateResponse.Types.GamePhase.GameOver)
+                {
+                    // Wenn der Spielzustand auf GameOver wechselt, den Rundenergebnis anzeigen
+                    if (_previousBalance != 0)
+                    {
+                        UpdateRoundResult(_previousBalance, localPlayer.Balance);
+                    }
+
+                    _previousBalance = localPlayer.Balance;
+                }
+                else if (_gameState.GamePhase == GameStateResponse.Types.GamePhase.PlacingBets)
+                {
+                    // Beim Start einer neuen Runde den aktuellen Kontostand speichern
+                    _previousBalance = localPlayer?.Balance ?? 0;
+                }
+            }
+        }
+
+        // Aktualisiere vorhandene Methoden:
+
+        // 1. In UpdateGameStateUI() am Ende hinzufügen:
+        // HandleGameStatePhaseChange();
+
+        // 2. Nach jeder Aktualisierung des Spielstatus Properties aktualisieren:
+        // OnPropertyChanged(nameof(PlayerBalance));
+        // OnPropertyChanged(nameof(CurrentBetDisplay));
+
+        // 3. Im Konstruktor _previousBalance initialisieren:
+        // _previousBalance = _localGame.GetPlayer().Balance;
 
         public bool IsStatusVisible
         {
@@ -230,6 +395,7 @@ namespace BlackjackGame.Client.ViewModels
             _playerName = "Player " + Guid.NewGuid().ToString().Substring(0, 4);
             _client = new BlackjackClient();
             _localGame = new LocalBlackjackGame();
+            _previousBalance = _localGame.GetPlayer().Balance;
 
             // Im BlackjackViewModel.cs - Konstruktor
             JoinGameCommand = new RelayCommand(async () => await JoinGame(), () => CanJoinGame);
@@ -381,6 +547,9 @@ namespace BlackjackGame.Client.ViewModels
             OnPropertyChanged(nameof(HitCommand));
             OnPropertyChanged(nameof(StandCommand));
             OnPropertyChanged(nameof(StartNewRoundCommand));
+            HandleGameStatePhaseChange();
+            OnPropertyChanged(nameof(PlayerBalance));
+            OnPropertyChanged(nameof(CurrentBetDisplay));
         }
         // In BlackjackViewModel.cs - UpdateCards-Methode ändern
         private void UpdateCards(GameStateResponse state)
@@ -526,6 +695,8 @@ namespace BlackjackGame.Client.ViewModels
             OnPropertyChanged(nameof(HitCommand));
             OnPropertyChanged(nameof(StandCommand));
             OnPropertyChanged(nameof(StartNewRoundCommand));
+            OnPropertyChanged(nameof(PlayerBalance));
+            OnPropertyChanged(nameof(CurrentBetDisplay));
         }
 
         private void UpdatePlayerCards()
@@ -556,12 +727,6 @@ namespace BlackjackGame.Client.ViewModels
             };
         }
 
-        // Event-Handler für lokales Spiel
-        private void OnLocalGameStateChanged(object sender, GameStateChangedEventArgs e)
-        {
-            UpdateLocalGameUI();
-        }
-
         private void OnLocalCardDealt(object sender, CardDealtEventArgs e)
         {
             // Hier könnte man Animation für Kartenausgabe hinzufügen
@@ -581,6 +746,8 @@ namespace BlackjackGame.Client.ViewModels
                 // Verwende lokales Spiel für Singleplayer
                 _localGame.PlaceBet(BetAmount);
             }
+            OnPropertyChanged(nameof(PlayerBalance));
+            OnPropertyChanged(nameof(CurrentBetDisplay));
         }
 
         private void HitAction()
@@ -617,6 +784,8 @@ namespace BlackjackGame.Client.ViewModels
             {
                 _ = _localGame.StartNewRound();
             }
+            OnPropertyChanged(nameof(PlayerBalance));
+            OnPropertyChanged(nameof(CurrentBetDisplay));
         }
 
         private void StartSinglePlayerGame()
@@ -635,6 +804,8 @@ namespace BlackjackGame.Client.ViewModels
             OnPropertyChanged(nameof(HitCommand));
             OnPropertyChanged(nameof(StandCommand));
             OnPropertyChanged(nameof(StartNewRoundCommand));
+            OnPropertyChanged(nameof(PlayerBalance));
+            OnPropertyChanged(nameof(CurrentBetDisplay));
         }
 
         // Fehlende OnPropertyChanged-Methode

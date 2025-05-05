@@ -84,12 +84,27 @@
                 </ItemsControl>
             </StackPanel>
 
-            <!-- Status Banner - NEU -->
-            <Border Grid.Row="1" Background="#333333" Opacity="0.8" Margin="50,10" CornerRadius="5"
-                    Visibility="{Binding IsStatusVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
-                <TextBlock Text="{Binding CurrentPlayerInfo}" FontSize="18" Foreground="White" 
-                           HorizontalAlignment="Center" Padding="10,5" FontWeight="Bold"/>
-            </Border>
+            <!-- Status Banner und Game Info -->
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Spielstatus-Banner -->
+                <Border Grid.Row="0" Background="#333333" Opacity="0.8" Margin="50,5,50,5" CornerRadius="5"
+                        Visibility="{Binding IsStatusVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <TextBlock Text="{Binding CurrentPlayerInfo}" FontSize="18" Foreground="White" 
+                               HorizontalAlignment="Center" Padding="10,5" FontWeight="Bold"/>
+                </Border>
+
+                <!-- Rundenergebnis-Banner (nur sichtbar wenn RoundResult nicht leer) -->
+                <Border Grid.Row="1" Background="#444444" Opacity="0.9" Margin="50,5,50,5" CornerRadius="5"
+                        Visibility="{Binding HasRoundResult, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <TextBlock Text="{Binding RoundResultInfo}" FontSize="16" Foreground="{Binding RoundResultColor}" 
+                               HorizontalAlignment="Center" Padding="10,5" FontWeight="SemiBold"/>
+                </Border>
+            </Grid>
 
             <!-- Second Player Area (Only visible in two-player mode) -->
             <StackPanel Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" 
@@ -141,10 +156,26 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <!-- Status -->
-                <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center">
-                    <TextBlock Text="{Binding StatusMessage}" FontSize="16" Foreground="{Binding StatusColor}" FontWeight="SemiBold"/>
-                </StackPanel>
+                <!-- Status und Spieler-Info -->
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Statusmeldung -->
+                    <TextBlock Grid.Row="0" Text="{Binding StatusMessage}" FontSize="16" 
+                               Foreground="{Binding StatusColor}" FontWeight="SemiBold" Margin="0,0,0,5"/>
+
+                    <!-- Spielerinfo (Kontostand) -->
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" Visibility="{Binding IsConnected, Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <TextBlock Text="Kontostand: " Foreground="#AAFFFFFF" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding PlayerBalance}" Foreground="#EEFFFFFF" FontWeight="Bold" VerticalAlignment="Center" Margin="5,0"/>
+
+                        <TextBlock Text=" | Aktueller Einsatz: " Foreground="#AAFFFFFF" VerticalAlignment="Center" Margin="15,0,0,0"/>
+                        <TextBlock Text="{Binding CurrentBetDisplay}" Foreground="#EEFFFFFF" FontWeight="Bold" VerticalAlignment="Center" Margin="5,0"/>
+                    </StackPanel>
+                </Grid>
 
                 <!-- Action Buttons -->
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
