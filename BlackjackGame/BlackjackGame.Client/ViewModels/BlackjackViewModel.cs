@@ -132,6 +132,12 @@ namespace BlackjackGame.Client.ViewModels
             Task.Delay(5000).ContinueWith(_ =>
             {
                 RoundResultInfo = string.Empty;
+                // UI aktualisieren
+                System.Windows.Application.Current.Dispatcher.Invoke(() =>
+                {
+                    OnPropertyChanged(nameof(RoundResultInfo));
+                    OnPropertyChanged(nameof(HasRoundResult));
+                });
             });
         }
 
@@ -168,28 +174,32 @@ namespace BlackjackGame.Client.ViewModels
         private void HandleGameStatePhaseChange()
         {
             // Nur für den Mehrspielermodus
-            if (IsTwoPlayerMode)
+            if (IsTwoPlayerMode && _gameState != null)
             {
                 var localPlayer = _gameState?.Players?.FirstOrDefault(p => p.Id == _client.PlayerId);
 
-                if (localPlayer != null && _gameState.GamePhase == GameStateResponse.Types.GamePhase.GameOver)
+                if (localPlayer != null)
                 {
-                    // Wenn der Spielzustand auf GameOver wechselt, den Rundenergebnis anzeigen
-                    if (_previousBalance != 0)
+                    if (_gameState.GamePhase == GameStateResponse.Types.GamePhase.GameOver)
                     {
-                        UpdateRoundResult(_previousBalance, localPlayer.Balance);
-                    }
+                        // Debug-Ausgabe um Werte zu prüfen
+                        Console.WriteLine($"GameOver: Previous={_previousBalance}, Current={localPlayer.Balance}");
 
-                    _previousBalance = localPlayer.Balance;
-                }
-                else if (_gameState.GamePhase == GameStateResponse.Types.GamePhase.PlacingBets)
-                {
-                    // Beim Start einer neuen Runde den aktuellen Kontostand speichern
-                    _previousBalance = localPlayer?.Balance ?? 0;
+                        // Auch wenn _previousBalance 0 ist, könnte es ein gültiger Wert sein
+                        UpdateRoundResult(_previousBalance, localPlayer.Balance);
+
+                        // Aktuellen Kontostand für die nächste Runde speichern
+                        _previousBalance = localPlayer.Balance;
+                    }
+                    else if (_gameState.GamePhase == GameStateResponse.Types.GamePhase.PlacingBets)
+                    {
+                        // Beim Start einer neuen Runde den aktuellen Kontostand speichern
+                        _previousBalance = localPlayer.Balance;
+                        Console.WriteLine($"PlacingBets: Setting _previousBalance to {_previousBalance}");
+                    }
                 }
             }
         }
-
         // Aktualisiere vorhandene Methoden:
 
         // 1. In UpdateGameStateUI() am Ende hinzufügen:
@@ -444,7 +454,19 @@ namespace BlackjackGame.Client.ViewModels
                 IsTwoPlayerMode = true;
 
                 // Hole die PlayerId aus dem Client
-                _playerId = _client.PlayerId; // Füge einen Getter für _playerId im BlackjackClient hinzu
+                _playerId = _client.PlayerId;
+
+                // Initialisiere _previousBalance bei Spielbeitritt
+                var initialState = await _client.GetGameState();
+                if (initialState != null && initialState.Success)
+                {
+                    var localPlayer = initialState.Players?.FirstOrDefault(p => p.Id == _client.PlayerId);
+                    if (localPlayer != null)
+                    {
+                        _previousBalance = localPlayer.Balance;
+                        Console.WriteLine($"Initialized _previousBalance to {_previousBalance}");
+                    }
+                }
 
                 StatusMessage = $"Connected to server as {PlayerName}. Waiting for game to start...";
 
@@ -816,12 +838,15 @@ namespace BlackjackGame.Client.ViewModels
     }
 
     // Helper class for card view model
+    // Erweiterte CardViewModel-Klasse für Blackjack-Spiel
     public class CardViewModel
     {
         public int Rank { get; }
         public int Suit { get; }
         public bool IsFaceUp { get; }
 
+        // Die folgenden Properties werden für die Texturen verwendet
+        public string ImageSource => GetImageSource();
         public string DisplayText => IsFaceUp ? GetRankName() + " of " + GetSuitName() : "Card Back";
 
         public CardViewModel(CardInfo cardInfo)
@@ -829,6 +854,52 @@ namespace BlackjackGame.Client.ViewModels
             Rank = cardInfo.Rank;
             Suit = cardInfo.Suit;
             IsFaceUp = cardInfo.IsFaceUp;
+        }
+
+        private string GetImageSource()
+        {
+            if (!IsFaceUp)
+                return "/Assets/Cards/card_backs/card_back.png";
+
+            string suitFolder = GetSuitFolder();
+            string rankName = GetRankFileName();
+
+            return $"/Assets/Cards/{suitFolder}/{rankName}.png";
+        }
+
+        private string GetSuitFolder()
+        {
+            return Suit switch
+            {
+                0 => "hearts",
+                1 => "diamonds",
+                2 => "clubs",
+                3 => "spades",
+                _ => "unknown"
+            };
+        }
+
+        private string GetRankFileName()
+        {
+            string suitName = GetSuitFolder();
+
+            return Rank switch
+            {
+                2 => $"{suitName}_2",
+                3 => $"{suitName}_3",
+                4 => $"{suitName}_4",
+                5 => $"{suitName}_5",
+                6 => $"{suitName}_6",
+                7 => $"{suitName}_7",
+                8 => $"{suitName}_8",
+                9 => $"{suitName}_9",
+                10 => $"{suitName}_10",
+                11 => $"{suitName}_jack",
+                12 => $"{suitName}_queen",
+                13 => $"{suitName}_king",
+                14 => $"{suitName}_ace",
+                _ => $"{suitName}_{Rank}"
+            };
         }
 
         private string GetRankName()

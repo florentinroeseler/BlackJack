@@ -15,6 +15,17 @@
         <!-- Verwende den eingebauten BooleanToVisibilityConverter -->
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
 
+        <!-- Style für Karten -->
+        <Style x:Key="CardStyle" TargetType="Border">
+            <Setter Property="Width" Value="80" />
+            <Setter Property="Height" Value="120" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="Margin" Value="5" />
+        </Style>
+
         <!-- Style für Buttons mit visuellem Feedback -->
         <Style x:Key="GameButtonStyle" TargetType="Button">
             <Setter Property="Margin" Value="5,0" />
@@ -75,9 +86,12 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Border Width="80" Height="120" Background="White" Margin="5" BorderBrush="Black" BorderThickness="1" CornerRadius="5">
-                                <TextBlock Text="{Binding DisplayText}" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                           TextWrapping="Wrap" TextAlignment="Center"/>
+                            <Border Style="{StaticResource CardStyle}">
+                                <Grid>
+                                    <Image Source="{Binding ImageSource}" Stretch="Uniform" Margin="2"/>
+                                    <TextBlock Text="{Binding DisplayText}" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                           TextWrapping="Wrap" TextAlignment="Center" Visibility="Collapsed"/>
+                                </Grid>
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
@@ -118,9 +132,12 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Border Width="80" Height="120" Background="White" Margin="5" BorderBrush="Black" BorderThickness="1" CornerRadius="5">
-                                <TextBlock Text="{Binding DisplayText}" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                           TextWrapping="Wrap" TextAlignment="Center"/>
+                            <Border Style="{StaticResource CardStyle}">
+                                <Grid>
+                                    <Image Source="{Binding ImageSource}" Stretch="Uniform" Margin="2"/>
+                                    <TextBlock Text="{Binding DisplayText}" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                           TextWrapping="Wrap" TextAlignment="Center" Visibility="Collapsed"/>
+                                </Grid>
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
@@ -138,9 +155,12 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Border Width="80" Height="120" Background="White" Margin="5" BorderBrush="Black" BorderThickness="1" CornerRadius="5">
-                                <TextBlock Text="{Binding DisplayText}" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                           TextWrapping="Wrap" TextAlignment="Center"/>
+                            <Border Style="{StaticResource CardStyle}">
+                                <Grid>
+                                    <Image Source="{Binding ImageSource}" Stretch="Uniform" Margin="2"/>
+                                    <TextBlock Text="{Binding DisplayText}" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                           TextWrapping="Wrap" TextAlignment="Center" Visibility="Collapsed"/>
+                                </Grid>
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>

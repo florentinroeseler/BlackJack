@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Client\App.xaml
-11407045341
+22068353695
 
-9881295724
+10-345381754
 205-1248358699
-MainWindow.xaml;
+Controls\CardControl.xaml;MainWindow.xaml;
 
 False
 

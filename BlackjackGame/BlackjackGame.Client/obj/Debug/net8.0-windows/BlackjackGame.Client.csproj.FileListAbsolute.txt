@@ -73,3 +73,5 @@ C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame
 C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Client\obj\Debug\net8.0-windows\BlackjackGame.Client.pdb
 C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Client\obj\Debug\net8.0-windows\BlackjackGame.Client.genruntimeconfig.cache
 C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Client\obj\Debug\net8.0-windows\ref\BlackjackGame.Client.dll
+C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Client\obj\Debug\net8.0-windows\Controls\CardControl.baml
+C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Client\obj\Debug\net8.0-windows\Controls\CardControl.g.cs

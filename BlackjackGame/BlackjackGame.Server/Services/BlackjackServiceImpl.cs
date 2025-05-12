@@ -132,7 +132,6 @@ namespace BlackjackGame.Server.Services
                 }
 
                 Debug($"Einsatz platziert: {request.BetAmount} für Spieler {currentPlayer.Name}");
-                currentPlayer.PlaceBet(request.BetAmount);
 
                 game.PlaceBet(request.BetAmount);
 
