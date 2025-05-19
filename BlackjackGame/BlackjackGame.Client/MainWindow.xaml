@@ -47,6 +47,101 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="WindowSizeStates">
+                <VisualState x:Name="NormalLayout">
+                    <Storyboard>
+                        <!-- Dealer -->
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="DealerNameNormal" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="DealerNameCompact" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="DealerCardsNormal" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="DealerCardsCompact" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        
+                        <!-- Opponent -->
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="OpponentNameNormal" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="OpponentNameCompact" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="OpponentCardsNormal" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="OpponentCardsCompact" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        
+                        <!-- Player -->
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PlayerNameNormal" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PlayerNameCompact" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PlayerCardsNormal" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PlayerCardsCompact" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="CompactLayout">
+                    <Storyboard>
+                        <!-- Dealer -->
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="DealerNameNormal" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="DealerNameCompact" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="DealerCardsNormal" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="DealerCardsCompact" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        
+                        <!-- Opponent -->
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="OpponentNameNormal" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="OpponentNameCompact" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="OpponentCardsNormal" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="OpponentCardsCompact" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        
+                        <!-- Player -->
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PlayerNameNormal" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PlayerNameCompact" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PlayerCardsNormal" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PlayerCardsCompact" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
         <!--Game Mode Selection -->
         <Border Grid.Row="0" Background="#1E1E1E" Padding="10">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
@@ -76,9 +171,30 @@
             </Grid.RowDefinitions>
 
             <!-- Dealer Area -->
-            <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="Dealer" FontSize="20" Foreground="White" HorizontalAlignment="Center" Margin="0,0,0,10"/>
-                <ItemsControl ItemsSource="{Binding DealerCards}" HorizontalAlignment="Center">
+            <Grid Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                
+                <!-- Normal: Name oben -->
+                <TextBlock x:Name="DealerNameNormal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+                           Text="Dealer" FontSize="20" Foreground="White" 
+                           HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                
+                <!-- Kompakt: Name links -->
+                <TextBlock x:Name="DealerNameCompact" Grid.Row="0" Grid.Column="0" 
+                           Text="Dealer" FontSize="20" Foreground="White" 
+                           HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,10,0"
+                           Visibility="Collapsed"/>
+                
+                <ItemsControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
+                             x:Name="DealerCardsNormal"
+                             ItemsSource="{Binding DealerCards}" HorizontalAlignment="Center">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel Orientation="Horizontal" />
@@ -89,14 +205,40 @@
                             <Border Style="{StaticResource CardStyle}">
                                 <Grid>
                                     <Image Source="{Binding ImageSource}" Stretch="Uniform" Margin="2"/>
-                                    <TextBlock Text="{Binding DisplayText}" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                           TextWrapping="Wrap" TextAlignment="Center" Visibility="Collapsed"/>
+                                    <TextBlock Text="{Binding DisplayText}" HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center" TextWrapping="Wrap" 
+                                              TextAlignment="Center" Visibility="Collapsed"/>
                                 </Grid>
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
-            </StackPanel>
+                
+                <!-- Kompakt: Karten rechts vom Namen -->
+                <ItemsControl Grid.Row="0" Grid.Column="1" 
+                             x:Name="DealerCardsCompact"
+                             ItemsSource="{Binding DealerCards}" 
+                             HorizontalAlignment="Left" VerticalAlignment="Center"
+                             Visibility="Collapsed">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource CardStyle}">
+                                <Grid>
+                                    <Image Source="{Binding ImageSource}" Stretch="Uniform" Margin="2"/>
+                                    <TextBlock Text="{Binding DisplayText}" HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center" TextWrapping="Wrap" 
+                                              TextAlignment="Center" Visibility="Collapsed"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
 
             <!-- Status Banner und Game Info -->
             <Grid Grid.Row="1">
@@ -121,10 +263,31 @@
             </Grid>
 
             <!-- Second Player Area (Only visible in two-player mode) -->
-            <StackPanel Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" 
-                        Visibility="{Binding IsTwoPlayerMode, Converter={StaticResource BooleanToVisibilityConverter}}">
-                <TextBlock Text="{Binding OpponentName}" FontSize="20" Foreground="White" HorizontalAlignment="Center" Margin="0,0,0,10"/>
-                <ItemsControl ItemsSource="{Binding Player2Cards}" HorizontalAlignment="Center">
+            <Grid Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"
+                  Visibility="{Binding IsTwoPlayerMode, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                
+                <!-- Normal: Name oben -->
+                <TextBlock x:Name="OpponentNameNormal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+                           Text="{Binding OpponentName}" FontSize="20" Foreground="White" 
+                           HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                
+                <!-- Kompakt: Name links -->
+                <TextBlock x:Name="OpponentNameCompact" Grid.Row="0" Grid.Column="0" 
+                           Text="{Binding OpponentName}" FontSize="20" Foreground="White" 
+                           HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,10,0"
+                           Visibility="Collapsed"/>
+                
+                <ItemsControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
+                             x:Name="OpponentCardsNormal"
+                             ItemsSource="{Binding Player2Cards}" HorizontalAlignment="Center">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel Orientation="Horizontal" />
@@ -135,19 +298,66 @@
                             <Border Style="{StaticResource CardStyle}">
                                 <Grid>
                                     <Image Source="{Binding ImageSource}" Stretch="Uniform" Margin="2"/>
-                                    <TextBlock Text="{Binding DisplayText}" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                           TextWrapping="Wrap" TextAlignment="Center" Visibility="Collapsed"/>
+                                    <TextBlock Text="{Binding DisplayText}" HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center" TextWrapping="Wrap" 
+                                              TextAlignment="Center" Visibility="Collapsed"/>
                                 </Grid>
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
-            </StackPanel>
+                
+                <!-- Kompakt: Karten rechts vom Namen -->
+                <ItemsControl Grid.Row="0" Grid.Column="1" 
+                             x:Name="OpponentCardsCompact"
+                             ItemsSource="{Binding Player2Cards}" 
+                             HorizontalAlignment="Left" VerticalAlignment="Center"
+                             Visibility="Collapsed">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource CardStyle}">
+                                <Grid>
+                                    <Image Source="{Binding ImageSource}" Stretch="Uniform" Margin="2"/>
+                                    <TextBlock Text="{Binding DisplayText}" HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center" TextWrapping="Wrap" 
+                                              TextAlignment="Center" Visibility="Collapsed"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
 
             <!-- Player Area -->
-            <StackPanel Grid.Row="3" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="{Binding PlayerName}" FontSize="20" Foreground="White" HorizontalAlignment="Center" Margin="0,0,0,10"/>
-                <ItemsControl ItemsSource="{Binding PlayerCards}" HorizontalAlignment="Center">
+            <Grid Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                
+                <!-- Normal: Name oben -->
+                <TextBlock x:Name="PlayerNameNormal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+                           Text="{Binding PlayerName}" FontSize="20" Foreground="White" 
+                           HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                
+                <!-- Kompakt: Name links -->
+                <TextBlock x:Name="PlayerNameCompact" Grid.Row="0" Grid.Column="0" 
+                           Text="{Binding PlayerName}" FontSize="20" Foreground="White" 
+                           HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,10,0"
+                           Visibility="Collapsed"/>
+                
+                <ItemsControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
+                             x:Name="PlayerCardsNormal"
+                             ItemsSource="{Binding PlayerCards}" HorizontalAlignment="Center">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel Orientation="Horizontal" />
@@ -158,14 +368,40 @@
                             <Border Style="{StaticResource CardStyle}">
                                 <Grid>
                                     <Image Source="{Binding ImageSource}" Stretch="Uniform" Margin="2"/>
-                                    <TextBlock Text="{Binding DisplayText}" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                           TextWrapping="Wrap" TextAlignment="Center" Visibility="Collapsed"/>
+                                    <TextBlock Text="{Binding DisplayText}" HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center" TextWrapping="Wrap" 
+                                              TextAlignment="Center" Visibility="Collapsed"/>
                                 </Grid>
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
-            </StackPanel>
+                
+                <!-- Kompakt: Karten rechts vom Namen -->
+                <ItemsControl Grid.Row="0" Grid.Column="1" 
+                             x:Name="PlayerCardsCompact"
+                             ItemsSource="{Binding PlayerCards}" 
+                             HorizontalAlignment="Left" VerticalAlignment="Center"
+                             Visibility="Collapsed">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource CardStyle}">
+                                <Grid>
+                                    <Image Source="{Binding ImageSource}" Stretch="Uniform" Margin="2"/>
+                                    <TextBlock Text="{Binding DisplayText}" HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center" TextWrapping="Wrap" 
+                                              TextAlignment="Center" Visibility="Collapsed"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
         </Grid>
 
         <!-- Controls Area -->
