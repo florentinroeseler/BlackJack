@@ -109,3 +109,13 @@ C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame
 C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Tests\obj\Debug\net8.0\BlackjackGame.Tests.pdb
 C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Tests\obj\Debug\net8.0\BlackjackGame.Tests.genruntimeconfig.cache
 C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Tests\obj\Debug\net8.0\ref\BlackjackGame.Tests.dll
+C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Tests\bin\Debug\net8.0\BlackjackGame.Server.deps.json
+C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Tests\bin\Debug\net8.0\BlackjackGame.Server.runtimeconfig.json
+C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Tests\bin\Debug\net8.0\BlackjackGame.Server.exe
+C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Tests\bin\Debug\net8.0\Grpc.AspNetCore.Server.dll
+C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Tests\bin\Debug\net8.0\Grpc.AspNetCore.Server.ClientFactory.dll
+C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Tests\bin\Debug\net8.0\Grpc.Net.Client.dll
+C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Tests\bin\Debug\net8.0\Grpc.Net.ClientFactory.dll
+C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Tests\bin\Debug\net8.0\Grpc.Net.Common.dll
+C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Tests\bin\Debug\net8.0\BlackjackGame.Server.dll
+C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Tests\bin\Debug\net8.0\BlackjackGame.Server.pdb

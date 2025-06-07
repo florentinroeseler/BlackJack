@@ -1,16 +1,15 @@
+using NUnit.Framework;
+
 namespace BlackjackGame.Tests
 {
-    public class Tests
+    [TestFixture]
+    public class SetupTest
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
-
         [Test]
-        public void Test1()
+        public void TestSetup_ShouldPass()
         {
-            Assert.Pass();
+            // Arrange & Act & Assert
+            Assert.Pass("NUnit setup successful!");
         }
     }
 }
