@@ -1,5 +1,4 @@
-﻿// BlackjackGame.Server/Services/GameManager.cs
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using BlackjackGame.Core.Game;
 using BlackjackGame.Core.Models;
@@ -38,7 +37,6 @@ namespace BlackjackGame.Server.Services
                 string playerId = Guid.NewGuid().ToString();
                 Debug($"Spieler versucht beizutreten: Name={playerName}, ID={playerId}");
 
-                // Suche nach existierenden Spielen mit einem freien Platz
                 foreach (var gameEntry in games)
                 {
                     var game = gameEntry.Value;
@@ -46,18 +44,15 @@ namespace BlackjackGame.Server.Services
 
                     if (game.IsTwoPlayerMode && (game.Player2 == null || string.IsNullOrEmpty(game.Player2.Id)))
                     {
-                        // Wenn Player2 null ist, erstelle ihn
                         if (game.Player2 == null)
                         {
                             game.Player2 = new Player(playerName);
                         }
                         else
                         {
-                            // Sonst aktualisiere vorhandenen Player2
                             game.Player2.Name = playerName;
                         }
 
-                        // Setze ID DIREKT und stelle sicher, dass sie korrekt gesetzt ist
                         Debug($"Player2 vor ID-Zuweisung: {game.Player2.Id ?? "null"}");
                         game.Player2.Id = playerId;
                         Debug($"Player2 nach ID-Zuweisung: {game.Player2.Id ?? "null"}");
@@ -73,11 +68,9 @@ namespace BlackjackGame.Server.Services
                     }
                 }
 
-                // Erstelle ein neues Spiel für den ersten Spieler
                 string gameId = CreateGame(true);
                 var newGame = games[gameId];
 
-                // Setze Daten für Spieler 1
                 newGame.Player1.Name = playerName;
                 newGame.Player1.Id = playerId;
                 playerGameMapping[playerId] = gameId;
@@ -106,7 +99,6 @@ namespace BlackjackGame.Server.Services
             var game = GetGameForPlayer(playerId);
             if (game == null) return null;
 
-            // Geändert: Vergleiche mit Id statt Name
             if (game.Player1.Id == playerId)
                 return game.Player1;
             else if (game.IsTwoPlayerMode && game.Player2?.Id == playerId)
@@ -121,17 +113,14 @@ namespace BlackjackGame.Server.Services
             {
                 if (games.TryGetValue(gameId, out BlackjackGameEngine game))
                 {
-                    // Wenn kein Spieler mehr im Spiel ist, entferne das Spiel
                     bool removeGame = false;
 
-                    // Geändert: Vergleiche mit Id statt Name
                     if (game.Player1.Id == playerId)
                     {
                         if (!game.IsTwoPlayerMode || game.Player2 == null)
                             removeGame = true;
                         else
                         {
-                            // Verschiebe Spieler 2 zu Spieler 1
                             game.Player1 = game.Player2;
                             game.Player2 = null;
                         }

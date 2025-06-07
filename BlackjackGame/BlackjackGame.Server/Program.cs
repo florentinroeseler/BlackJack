@@ -1,5 +1,4 @@
-﻿// BlackjackGame.Server/Program.cs
-using BlackjackGame.Core.Game;
+﻿using BlackjackGame.Core.Game;
 using BlackjackGame.Core.Models;
 using BlackjackGame.Server.Services;
 using Grpc.Core;

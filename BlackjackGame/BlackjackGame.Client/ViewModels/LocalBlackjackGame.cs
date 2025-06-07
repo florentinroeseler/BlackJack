@@ -1,5 +1,4 @@
-﻿// BlackjackGame.Client/ViewModels/LocalBlackjackGame.cs
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using BlackjackGame.Core.Models;
@@ -56,27 +55,23 @@ namespace BlackjackGame.Client.ViewModels
 
         private void DealInitialCards()
         {
-            // Player gets first card face up
             Card card = _deck.DrawCard();
             card.IsFaceUp = true;
             _player.Hand.AddCard(card);
             OnCardDealt(new CardDealtEventArgs { Card = card, IsPlayerCard = true });
 
-            // Dealer gets first card face up
             card = _deck.DrawCard();
             card.IsFaceUp = true;
             _dealer.Hand.AddCard(card);
             OnCardDealt(new CardDealtEventArgs { Card = card, IsPlayerCard = false });
 
-            // Player gets second card face up
             card = _deck.DrawCard();
             card.IsFaceUp = true;
             _player.Hand.AddCard(card);
             OnCardDealt(new CardDealtEventArgs { Card = card, IsPlayerCard = true });
 
-            // Dealer gets second card face down (will be revealed later)
             card = _deck.DrawCard();
-            card.IsFaceUp = false; // Face down
+            card.IsFaceUp = false;
             _dealer.Hand.AddCard(card);
             OnCardDealt(new CardDealtEventArgs { Card = card, IsPlayerCard = false });
 
@@ -116,7 +111,6 @@ namespace BlackjackGame.Client.ViewModels
             _gameState = GameState.DealerTurn;
             OnGameStateChanged(new GameStateChangedEventArgs { NewState = _gameState });
 
-            // Reveal dealer's hidden card
             _dealer.RevealHiddenCard();
 
             foreach (var card in _dealer.Hand.Cards)
@@ -127,7 +121,6 @@ namespace BlackjackGame.Client.ViewModels
                 }
             }
 
-            // Dealer must hit until reaching at least 17
             while (_dealer.Hand.GetValue() < 17)
             {
                 Card card = _deck.DrawCard();
@@ -177,7 +170,6 @@ namespace BlackjackGame.Client.ViewModels
             }
             else
             {
-                // Push (tie)
                 _player.Push();
             }
 
@@ -187,15 +179,13 @@ namespace BlackjackGame.Client.ViewModels
 
         public async Task StartNewRound()
         {
-            // Clear hands
             _player.Hand.Clear();
             _dealer.Hand.Clear();
 
-            // Reset game state
             _gameState = GameState.PlacingBets;
             OnGameStateChanged(new GameStateChangedEventArgs { NewState = _gameState });
 
-            await Task.Delay(500); // Small delay for UI update
+            await Task.Delay(500);
         }
 
         // Getters for game state

@@ -1,5 +1,4 @@
-﻿// BlackjackGame.Client/ViewModels/BlackjackViewModel.cs
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Threading.Tasks;
@@ -7,7 +6,6 @@ using System.Windows.Input;
 using System.Windows.Controls;
 using BlackjackGame.Client.Services;
 using BlackjackGame.Core.Models;
-// Die nächste Zeile ist wichtig - sie importiert die generierten gRPC-Klassen
 using BlackjackGame.Core.Protos;
 using System.Linq;
 
@@ -36,9 +34,6 @@ namespace BlackjackGame.Client.ViewModels
         public ICommand StartSinglePlayerGameCommand { get; }
 
         // Properties
-        // Füge diese Properties zum BlackjackViewModel.cs hinzu
-
-        // Property für den aktuellen Kontostand
         public string PlayerBalance
         {
             get
@@ -135,10 +130,8 @@ namespace BlackjackGame.Client.ViewModels
                 RoundResultColor = "Gold";
             }
 
-            // Nach 5 Sekunden automatisch ausblenden
             Task.Delay(5000).ContinueWith(_ =>
             {
-                // UI-Thread verwenden, um UI-Elemente zu aktualisieren
                 System.Windows.Application.Current.Dispatcher.Invoke(() =>
                 {
                     RoundResultInfo = string.Empty;
@@ -148,11 +141,8 @@ namespace BlackjackGame.Client.ViewModels
             });
         }
 
-        // Ergänze diese Methode zur LocalGameStateChanged-Event-Behandlung
-
         private int _previousBalance = 0;
 
-        // 3. Ersetze die OnLocalGameStateChanged-Methode
         private void OnLocalGameStateChanged(object sender, GameStateChangedEventArgs e)
         {
             var player = _localGame.GetPlayer();
@@ -161,7 +151,6 @@ namespace BlackjackGame.Client.ViewModels
             {
                 var dealer = _localGame.GetDealer();
 
-                // Ergebnis basierend auf dem tatsächlichen Spielausgang mit _lastBetAmount
                 if (player.Hand.IsBusted)
                 {
                     // Spieler hat sich überkauft
@@ -211,10 +200,6 @@ namespace BlackjackGame.Client.ViewModels
                     RoundResultColor = "Gold";
                 }
 
-                // Debugging
-                Console.WriteLine($"Einspielermodus - Ergebnis: {RoundResultInfo}, LastBetAmount: {_lastBetAmount}");
-
-                // Aktualisiere den Kontostand für die nächste Runde
                 _previousBalance = player.Balance;
             }
             else if (e.NewState == GameState.PlacingBets)
@@ -231,13 +216,8 @@ namespace BlackjackGame.Client.ViewModels
             UpdateLocalGameUI();
         }
 
-        // Ergänze diese Methode zur UpdateGameStateUI-Methode (direkt nach der Verarbeitung des GameState)
-
-        // Neue Statusvariable hinzufügen
         private bool _roundResultProcessed = false;
 
-
-        // 2. Ersetze die HandleGameStatePhaseChange-Methode durch diese vereinfachte Version
         private void HandleGameStatePhaseChange()
         {
             // Nur für den Mehrspielermodus
@@ -267,9 +247,6 @@ namespace BlackjackGame.Client.ViewModels
                                 playerValue = localPlayer.Hand.Value;
                                 dealerValue = _gameState.Dealer.Hand.Value;
                             }
-
-                            // Wir verwenden den gespeicherten Einsatz (_lastBetAmount)
-                            Console.WriteLine($"Determining result with bet amount: {_lastBetAmount}");
 
                             // Ermittlung des Spielergebnisses basierend auf Kartenwerten
                             if (playerBusted)
@@ -304,9 +281,6 @@ namespace BlackjackGame.Client.ViewModels
                             }
 
                             _roundResultProcessed = true; // Markieren als verarbeitet
-
-                            // Debugging-Ausgabe
-                            Console.WriteLine($"Ergebnis berechnet: {RoundResultInfo}");
                         }
 
                         // Kontostand am Ende der Runde aktualisieren
@@ -317,10 +291,8 @@ namespace BlackjackGame.Client.ViewModels
                         // Beim Start einer neuen Runde den Status zurücksetzen
                         _roundResultProcessed = false;
 
-                        // Speichere den Kontostand VOR dem Platzieren des Einsatzes
                         _previousBalance = localPlayer.Balance;
 
-                        // RoundResultInfo zurücksetzen
                         RoundResultInfo = string.Empty;
                         OnPropertyChanged(nameof(RoundResultInfo));
                         OnPropertyChanged(nameof(HasRoundResult));
@@ -335,7 +307,6 @@ namespace BlackjackGame.Client.ViewModels
             get => !string.IsNullOrEmpty(_currentPlayerInfo);
         }
 
-        // In BlackjackViewModel.cs - neue Properties hinzufügen
 
         private string _opponentName = "Player 2";
         public string OpponentName
@@ -519,60 +490,44 @@ namespace BlackjackGame.Client.ViewModels
 
         public BlackjackViewModel()
         {
-            // Generiere einen eindeutigen Spielernamen
             _playerName = "Player " + Guid.NewGuid().ToString().Substring(0, 4);
             _client = new BlackjackClient();
             _localGame = new LocalBlackjackGame();
 
-            // Wichtig: Initialisierung des _previousBalance mit dem korrekten Startwert
             _previousBalance = _localGame.GetPlayer().Balance;
 
-            // _roundResultProcessed explizit auf false setzen
             _roundResultProcessed = false;
 
-            // Im BlackjackViewModel.cs - Konstruktor
             JoinGameCommand = new RelayCommand(async () => await JoinGame(), () => CanJoinGame);
 
-            // Im BlackjackViewModel-Konstruktor
             PlaceBetCommand = new RelayCommand(PlaceBetAction, () =>
-                // Zwei-Spieler-Modus: Nur wenn Einsatzphase UND Spieler am Zug
                 (_gameState?.GamePhase == GameStateResponse.Types.GamePhase.PlacingBets && IsConnected && IsTwoPlayerMode && IsPlayerTurn) ||
-                // Einzel-Spieler-Modus
                 (_localGame.GetGameState() == GameState.PlacingBets && IsConnected && !IsTwoPlayerMode));
 
             HitCommand = new RelayCommand(HitAction, () =>
-                // Zwei-Spieler-Modus: Nur wenn Spielphase UND Spieler am Zug
                 (_gameState?.GamePhase == GameStateResponse.Types.GamePhase.PlayerTurn && IsPlayerTurn && IsTwoPlayerMode) ||
-                // Einzel-Spieler-Modus
                 (_localGame.GetGameState() == GameState.PlayerTurn && !IsTwoPlayerMode));
 
             StandCommand = new RelayCommand(StandAction, () =>
-                // Zwei-Spieler-Modus: Nur wenn Spielphase UND Spieler am Zug
                 (_gameState?.GamePhase == GameStateResponse.Types.GamePhase.PlayerTurn && IsPlayerTurn && IsTwoPlayerMode) ||
-                // Einzel-Spieler-Modus
                 (_localGame.GetGameState() == GameState.PlayerTurn && !IsTwoPlayerMode));
 
             StartNewRoundCommand = new RelayCommand(StartNewRoundAction, () =>
-                // Beide Modi: Nur wenn Spielende
                 (_gameState?.GamePhase == GameStateResponse.Types.GamePhase.GameOver && IsTwoPlayerMode) ||
                 (_localGame.GetGameState() == GameState.GameOver && !IsTwoPlayerMode));
 
             StartSinglePlayerGameCommand = new RelayCommand(StartSinglePlayerGame, () => !IsConnected);
 
-            // Event-Handler für lokales Spiel registrieren
             _localGame.GameStateChanged += OnLocalGameStateChanged;
             _localGame.CardDealt += OnLocalCardDealt;
 
-            // Set default state
             StatusMessage = "Welcome to Blackjack! Choose game mode to start.";
         }
 
-        private string _playerId; // Neue Variable hinzufügen
+        private string _playerId;
 
-        // 5. Ergänze auch die JoinGame-Methode, um die _lastBetAmount zurückzusetzen
         private async Task JoinGame()
         {
-            // _lastBetAmount zurücksetzen
             _lastBetAmount = 0;
 
             if (await _client.JoinGame(PlayerName))
@@ -581,13 +536,10 @@ namespace BlackjackGame.Client.ViewModels
                 IsTwoPlayerMode = true;
                 _roundResultProcessed = false; // Status zurücksetzen
 
-                // RoundResultInfo zurücksetzen
                 RoundResultInfo = string.Empty;
 
-                // Hole die PlayerId aus dem Client
                 _playerId = _client.PlayerId;
 
-                // Initialisiere den Kontostand
                 var state = await _client.GetGameState();
                 if (state != null && state.Success)
                 {
@@ -601,7 +553,6 @@ namespace BlackjackGame.Client.ViewModels
 
                 StatusMessage = $"Connected to server as {PlayerName}. Waiting for game to start...";
 
-                // Start polling for game state
                 _ = StartGameStatePoll();
             }
             else
@@ -615,7 +566,7 @@ namespace BlackjackGame.Client.ViewModels
             while (IsConnected)
             {
                 await UpdateGameState();
-                await Task.Delay(1000); // Poll every second
+                await Task.Delay(1000);
             }
         }
 
@@ -628,50 +579,42 @@ namespace BlackjackGame.Client.ViewModels
             }
         }
 
-        // Und die UpdateGameStateUI-Methode anpassen
-        // 2. Dann aktualisiere die UpdateGameStateUI-Methode, um den Gegnernamen zu setzen
         private void UpdateGameStateUI(GameStateResponse state)
         {
             _gameState = state;
 
             StatusMessage = state.Message;
 
-            // Prüfe, ob die Antwort erfolgreich war
             if (!state.Success)
             {
-                StatusColor = "Red"; // Fehler rot anzeigen
+                StatusColor = "Red";
                 return;
             }
 
-            // Nur weitermachen, wenn alle notwendigen Daten vorhanden sind
             if (state.Dealer != null && state.Players != null && state.Players.Count > 0)
             {
-                // Finde den lokalen Spieler anhand der ID
                 var localPlayer = state.Players.FirstOrDefault(p => p.Id == _client.PlayerId);
                 var currentPlayer = state.Players.FirstOrDefault(p => p.IsCurrentPlayer);
 
-                // Finde den Gegner-Spieler (jeder Spieler außer dem lokalen Spieler)
                 var opponent = state.Players.FirstOrDefault(p => p.Id != _client.PlayerId);
                 if (opponent != null)
                 {
-                    OpponentName = opponent.Name; // Setze den Namen des Gegners
+                    OpponentName = opponent.Name;
                 }
 
-                // Spielerzug-Status
                 IsPlayerTurn = localPlayer != null && localPlayer.IsCurrentPlayer;
 
-                // Aktueller Spieler Info
                 if (currentPlayer != null)
                 {
                     if (currentPlayer.Id == _client.PlayerId)
                     {
                         CurrentPlayerInfo = "Du bist am Zug!";
-                        StatusColor = "LimeGreen"; // Eigener Zug grün anzeigen
+                        StatusColor = "LimeGreen";
                     }
                     else
                     {
                         CurrentPlayerInfo = $"{currentPlayer.Name} ist am Zug";
-                        StatusColor = "White"; // Standard weiß
+                        StatusColor = "White";
                     }
                 }
                 else
@@ -680,7 +623,6 @@ namespace BlackjackGame.Client.ViewModels
                     StatusColor = "White";
                 }
 
-                // Update cards
                 UpdateCards(state);
             }
             else
@@ -689,19 +631,16 @@ namespace BlackjackGame.Client.ViewModels
                 CurrentPlayerInfo = string.Empty;
             }
 
-            // Aktualisiere Tool-Tip-Properties
             OnPropertyChanged(nameof(PlaceBetTooltip));
             OnPropertyChanged(nameof(HitTooltip));
             OnPropertyChanged(nameof(StandTooltip));
             OnPropertyChanged(nameof(StartNewRoundTooltip));
 
-            // Update UI state based on game phase
             OnPropertyChanged(nameof(PlaceBetCommand));
             OnPropertyChanged(nameof(HitCommand));
             OnPropertyChanged(nameof(StandCommand));
             OnPropertyChanged(nameof(StartNewRoundCommand));
 
-            // WICHTIG: Hier fehlte der Aufruf von HandleGameStatePhaseChange()
             HandleGameStatePhaseChange();
 
             OnPropertyChanged(nameof(PlayerBalance));
@@ -709,17 +648,14 @@ namespace BlackjackGame.Client.ViewModels
         }
         private void UpdateCards(GameStateResponse state)
         {
-            // Update dealer cards
             DealerCards.Clear();
             foreach (var card in state.Dealer.Hand.Cards)
             {
                 DealerCards.Add(new CardViewModel(card));
             }
 
-            // Finde den lokalen Spieler anhand der ID
             var localPlayer = state.Players.FirstOrDefault(p => p.Id == _playerId);
 
-            // Update local player cards
             PlayerCards.Clear();
             if (localPlayer != null)
             {
@@ -729,7 +665,6 @@ namespace BlackjackGame.Client.ViewModels
                 }
             }
 
-            // Update other player cards
             Player2Cards.Clear();
             var otherPlayer = state.Players.FirstOrDefault(p => p.Id != _playerId);
             if (otherPlayer != null)
@@ -795,7 +730,6 @@ namespace BlackjackGame.Client.ViewModels
 
         private void UpdateLocalGameUI()
         {
-            // Aktualisiere Status-Nachricht basierend auf Spielzustand
             switch (_localGame.GetGameState())
             {
                 case GameState.PlacingBets:
@@ -836,16 +770,12 @@ namespace BlackjackGame.Client.ViewModels
                     break;
             }
 
-            // Aktualisiere Spielerkarten
             UpdatePlayerCards();
 
-            // Aktualisiere Dealer-Karten
             UpdateDealerCards();
 
-            // Aktualisiere UI-State (für Button-Aktivierung)
             IsPlayerTurn = _localGame.GetGameState() == GameState.PlayerTurn;
 
-            // Benachrichtige UI, dass sich Commands ändern können
             OnPropertyChanged(nameof(PlaceBetCommand));
             OnPropertyChanged(nameof(HitCommand));
             OnPropertyChanged(nameof(StandCommand));
@@ -884,15 +814,11 @@ namespace BlackjackGame.Client.ViewModels
 
         private void OnLocalCardDealt(object sender, CardDealtEventArgs e)
         {
-            // Hier könnte man Animation für Kartenausgabe hinzufügen
             UpdateLocalGameUI();
         }
 
-        // Aktionsmethoden für Commands, die beide Modi unterstützen
-        // 4. Ersetze die PlaceBetAction-Methode - HIER SPEICHERN WIR DEN EINSATZ
         private void PlaceBetAction()
         {
-            // WICHTIG: Speichere den aktuellen Einsatz für spätere Verwendung
             _lastBetAmount = BetAmount;
             Console.WriteLine($"Saved bet amount: {_lastBetAmount}");
 
@@ -960,8 +886,6 @@ namespace BlackjackGame.Client.ViewModels
             OnPropertyChanged(nameof(PlayerBalance));
             OnPropertyChanged(nameof(CurrentBetDisplay));
         }
-
-        // 6. Ergänze auch die StartSinglePlayerGame-Methode, um _lastBetAmount zurückzusetzen
         private void StartSinglePlayerGame()
         {
             // _lastBetAmount zurücksetzen
@@ -970,19 +894,14 @@ namespace BlackjackGame.Client.ViewModels
             IsConnected = true;
             IsTwoPlayerMode = false;
 
-            // RoundResultInfo zurücksetzen
             RoundResultInfo = string.Empty;
 
-            // _previousBalance zurücksetzen und neu initialisieren
             _previousBalance = _localGame.GetPlayer().Balance;
 
-            // Initialize local game
             _localGame.StartGame();
 
-            // Update UI with local game state
             UpdateLocalGameUI();
 
-            // Notifiziere UI über geänderten Zustand
             OnPropertyChanged(nameof(PlaceBetCommand));
             OnPropertyChanged(nameof(HitCommand));
             OnPropertyChanged(nameof(StandCommand));
@@ -993,14 +912,12 @@ namespace BlackjackGame.Client.ViewModels
             OnPropertyChanged(nameof(HasRoundResult));
         }
 
-        // Fehlende OnPropertyChanged-Methode
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 
-    // Helper class for card view model
     // Erweiterte CardViewModel-Klasse für Blackjack-Spiel
     public class CardViewModel
     {
@@ -1008,7 +925,6 @@ namespace BlackjackGame.Client.ViewModels
         public int Suit { get; }
         public bool IsFaceUp { get; }
 
-        // Die folgenden Properties werden für die Texturen verwendet
         public string ImageSource => GetImageSource();
         public string DisplayText => IsFaceUp ? GetRankName() + " of " + GetSuitName() : "Card Back";
 
@@ -1099,7 +1015,6 @@ namespace BlackjackGame.Client.ViewModels
         }
     }
 
-    // Simple relay command implementation
     public class RelayCommand : ICommand
     {
         private readonly Action _execute;

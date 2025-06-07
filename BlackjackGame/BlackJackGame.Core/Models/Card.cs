@@ -1,5 +1,4 @@
-﻿// BlackjackGame.Core/Models/Card.cs
-using BlackjackGame.Core.Models;
+﻿using BlackjackGame.Core.Models;
 
 namespace BlackjackGame.Core.Models
 {

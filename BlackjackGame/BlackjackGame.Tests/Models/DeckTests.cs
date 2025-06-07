@@ -263,7 +263,6 @@ namespace BlackjackGame.Tests.Models
             var deck = new Deck();
             var drawnCards = new List<Card>();
 
-            // Act - Draw more cards than are in a single deck
             for (int i = 0; i < 60; i++) // More than 52
             {
                 drawnCards.Add(deck.DrawCard());

@@ -1,6 +1,4 @@
-﻿
-// BlackjackGame.Core/Models/Player.cs
-using BlackjackGame.Core.Models;
+﻿using BlackjackGame.Core.Models;
 
 namespace BlackjackGame.Core.Models
 {
@@ -14,7 +12,6 @@ namespace BlackjackGame.Core.Models
             get => _id;
             set
             {
-                // Akzeptiere auch leere IDs für die Initialisierung
                 _id = value ?? string.Empty;
             }
         }

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BlackjackGame.Core.Models.Card">
+    <Position X="1.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAABAIAAAAAAEAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Card.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackjackGame.Core.Models.Dealer">
+    <Position X="4.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACAAAAAAAAgAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Models\Dealer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackjackGame.Core.Models.Deck">
+    <Position X="4.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAggAAAAAEAAAAAAAAAQAAAAAEAA=</HashCode>
+      <FileName>Models\Deck.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackjackGame.Core.Models.Hand">
+    <Position X="6.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAIAAAAAAAAAgAAAAIAAAAAAAAAAAAgABgAAA=</HashCode>
+      <FileName>Models\Hand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackjackGame.Core.Models.Player">
+    <Position X="3" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAACQAAAACAAAAAAgEhAAAQAAAAAAAAAAAAgAAAACAA=</HashCode>
+      <FileName>Models\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="BlackjackGame.Core.Models.Suit">
+    <Position X="3" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAEAAAAAAAAABAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Models\Card.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BlackjackGame.Core.Models.Rank">
+    <Position X="1.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAggAAAEAAEAIAAAAAFBAAAAAgAAAgAAEE=</HashCode>
+      <FileName>Models\Card.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

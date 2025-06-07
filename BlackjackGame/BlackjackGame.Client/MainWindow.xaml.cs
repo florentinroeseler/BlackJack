@@ -1,5 +1,4 @@
-﻿// BlackjackGame.Client/MainWindow.xaml.cs
-using System;
+﻿using System;
 using System.Security.Claims;
 using System.Windows;
 using System.Windows.Controls;

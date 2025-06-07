@@ -1,5 +1,4 @@
-﻿// Erstelle eine neue Datei: BlackjackGame.Client/Converters/StringToVisibilityConverter.cs
-using System;
+﻿using System;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;

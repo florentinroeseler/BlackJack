@@ -1,5 +1,4 @@
-﻿// BlackjackGame.Core/Game/BlackjackGameEngine.cs
-using System;
+﻿using System;
 using System.Threading.Tasks;
 using BlackjackGame.Core.Models;
 
@@ -17,8 +16,8 @@ namespace BlackjackGame.Core.Game
     {
         public Deck Deck { get; private set; }
         public Dealer Dealer { get; private set; }
-        public Player Player1 { get; set; }  // Öffentlichen Setter hinzugefügt
-        public Player Player2 { get; set; }  // Öffentlichen Setter hinzugefügt
+        public Player Player1 { get; set; } 
+        public Player Player2 { get; set; }
         public Player CurrentPlayer { get; private set; }
         public GameState State { get; private set; }
         public bool IsTwoPlayerMode { get; private set; }

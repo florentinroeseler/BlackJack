@@ -1,0 +1,72 @@
+GameManager initialisiert
+MANAGER: Spieler versucht beizutreten: Name=Player0, ID=b02857a9-c8c3-44e1-808b-70a61050b116
+MANAGER: Neues Spiel erstellt: ID=a4e733ce-2e23-44b0-8290-1a063224770c, TwoPlayerMode=True
+MANAGER: Neues Spiel mit Spieler 1 erstellt: GameID=a4e733ce-2e23-44b0-8290-1a063224770c, PlayerID=b02857a9-c8c3-44e1-808b-70a61050b116, Name=Player0
+MANAGER: Player1: ID=b02857a9-c8c3-44e1-808b-70a61050b116, Name=Player0
+MANAGER: Spieler versucht beizutreten: Name=Player8, ID=98b76ade-b963-4e4a-bfb7-62814e7fb433
+MANAGER: Prüfe Spiel: a4e733ce-2e23-44b0-8290-1a063224770c, IsTwoPlayerMode=True, Player2 existiert: True
+MANAGER: Player2 vor ID-Zuweisung: 
+MANAGER: Player2 nach ID-Zuweisung: 98b76ade-b963-4e4a-bfb7-62814e7fb433
+MANAGER: Spieler 2 dem Spiel a4e733ce-2e23-44b0-8290-1a063224770c hinzugefügt: ID=98b76ade-b963-4e4a-bfb7-62814e7fb433, Name=Player8
+MANAGER: Player1: ID=b02857a9-c8c3-44e1-808b-70a61050b116, Name=Player0
+MANAGER: Player2: ID=98b76ade-b963-4e4a-bfb7-62814e7fb433, Name=Player8
+MANAGER: CurrentPlayer: Player0
+MANAGER: Spieler versucht beizutreten: Name=Player1, ID=3dba40a8-3695-4e90-80e8-beccc8ae978d
+MANAGER: Prüfe Spiel: a4e733ce-2e23-44b0-8290-1a063224770c, IsTwoPlayerMode=True, Player2 existiert: True
+MANAGER: Neues Spiel erstellt: ID=a02dc0bd-e015-4964-a195-a05d64416325, TwoPlayerMode=True
+MANAGER: Neues Spiel mit Spieler 1 erstellt: GameID=a02dc0bd-e015-4964-a195-a05d64416325, PlayerID=3dba40a8-3695-4e90-80e8-beccc8ae978d, Name=Player1
+MANAGER: Player1: ID=3dba40a8-3695-4e90-80e8-beccc8ae978d, Name=Player1
+MANAGER: Spieler versucht beizutreten: Name=Player2, ID=b4e720a1-a90b-4b2b-91af-35a5e1ff9774
+MANAGER: Prüfe Spiel: a02dc0bd-e015-4964-a195-a05d64416325, IsTwoPlayerMode=True, Player2 existiert: True
+MANAGER: Player2 vor ID-Zuweisung: 
+MANAGER: Player2 nach ID-Zuweisung: b4e720a1-a90b-4b2b-91af-35a5e1ff9774
+MANAGER: Spieler 2 dem Spiel a02dc0bd-e015-4964-a195-a05d64416325 hinzugefügt: ID=b4e720a1-a90b-4b2b-91af-35a5e1ff9774, Name=Player2
+MANAGER: Player1: ID=3dba40a8-3695-4e90-80e8-beccc8ae978d, Name=Player1
+MANAGER: Player2: ID=b4e720a1-a90b-4b2b-91af-35a5e1ff9774, Name=Player2
+MANAGER: CurrentPlayer: Player1
+MANAGER: Spieler versucht beizutreten: Name=Player3, ID=a4bd9f2f-2df9-4329-83e4-ce85439303bd
+MANAGER: Prüfe Spiel: a02dc0bd-e015-4964-a195-a05d64416325, IsTwoPlayerMode=True, Player2 existiert: True
+MANAGER: Prüfe Spiel: a4e733ce-2e23-44b0-8290-1a063224770c, IsTwoPlayerMode=True, Player2 existiert: True
+MANAGER: Neues Spiel erstellt: ID=189ad887-121d-461a-b34a-ae3f4d9c3902, TwoPlayerMode=True
+MANAGER: Neues Spiel mit Spieler 1 erstellt: GameID=189ad887-121d-461a-b34a-ae3f4d9c3902, PlayerID=a4bd9f2f-2df9-4329-83e4-ce85439303bd, Name=Player3
+MANAGER: Player1: ID=a4bd9f2f-2df9-4329-83e4-ce85439303bd, Name=Player3
+MANAGER: Spieler versucht beizutreten: Name=Player4, ID=5808587d-55c5-4e97-87f6-4c7b2ecc69b9
+MANAGER: Prüfe Spiel: 189ad887-121d-461a-b34a-ae3f4d9c3902, IsTwoPlayerMode=True, Player2 existiert: True
+MANAGER: Player2 vor ID-Zuweisung: 
+MANAGER: Player2 nach ID-Zuweisung: 5808587d-55c5-4e97-87f6-4c7b2ecc69b9
+MANAGER: Spieler 2 dem Spiel 189ad887-121d-461a-b34a-ae3f4d9c3902 hinzugefügt: ID=5808587d-55c5-4e97-87f6-4c7b2ecc69b9, Name=Player4
+MANAGER: Player1: ID=a4bd9f2f-2df9-4329-83e4-ce85439303bd, Name=Player3
+MANAGER: Player2: ID=5808587d-55c5-4e97-87f6-4c7b2ecc69b9, Name=Player4
+MANAGER: CurrentPlayer: Player3
+MANAGER: Spieler versucht beizutreten: Name=Player6, ID=7152b882-9752-4d91-aa6d-052df515672e
+MANAGER: Prüfe Spiel: 189ad887-121d-461a-b34a-ae3f4d9c3902, IsTwoPlayerMode=True, Player2 existiert: True
+MANAGER: Prüfe Spiel: a02dc0bd-e015-4964-a195-a05d64416325, IsTwoPlayerMode=True, Player2 existiert: True
+MANAGER: Prüfe Spiel: a4e733ce-2e23-44b0-8290-1a063224770c, IsTwoPlayerMode=True, Player2 existiert: True
+MANAGER: Neues Spiel erstellt: ID=1afed180-e2fa-4f58-8425-d921dea8d034, TwoPlayerMode=True
+MANAGER: Neues Spiel mit Spieler 1 erstellt: GameID=1afed180-e2fa-4f58-8425-d921dea8d034, PlayerID=7152b882-9752-4d91-aa6d-052df515672e, Name=Player6
+MANAGER: Player1: ID=7152b882-9752-4d91-aa6d-052df515672e, Name=Player6
+MANAGER: Spieler versucht beizutreten: Name=Player5, ID=fee855e8-a213-4624-bf8e-0bbf083139a8
+MANAGER: Prüfe Spiel: 1afed180-e2fa-4f58-8425-d921dea8d034, IsTwoPlayerMode=True, Player2 existiert: True
+MANAGER: Player2 vor ID-Zuweisung: 
+MANAGER: Player2 nach ID-Zuweisung: fee855e8-a213-4624-bf8e-0bbf083139a8
+MANAGER: Spieler 2 dem Spiel 1afed180-e2fa-4f58-8425-d921dea8d034 hinzugefügt: ID=fee855e8-a213-4624-bf8e-0bbf083139a8, Name=Player5
+MANAGER: Player1: ID=7152b882-9752-4d91-aa6d-052df515672e, Name=Player6
+MANAGER: Player2: ID=fee855e8-a213-4624-bf8e-0bbf083139a8, Name=Player5
+MANAGER: CurrentPlayer: Player6
+MANAGER: Spieler versucht beizutreten: Name=Player9, ID=6f44c161-9626-4bbd-8081-5b28d63d2d81
+MANAGER: Prüfe Spiel: 1afed180-e2fa-4f58-8425-d921dea8d034, IsTwoPlayerMode=True, Player2 existiert: True
+MANAGER: Prüfe Spiel: 189ad887-121d-461a-b34a-ae3f4d9c3902, IsTwoPlayerMode=True, Player2 existiert: True
+MANAGER: Prüfe Spiel: a02dc0bd-e015-4964-a195-a05d64416325, IsTwoPlayerMode=True, Player2 existiert: True
+MANAGER: Prüfe Spiel: a4e733ce-2e23-44b0-8290-1a063224770c, IsTwoPlayerMode=True, Player2 existiert: True
+MANAGER: Neues Spiel erstellt: ID=1c98ef4b-0bef-4c24-924a-0b1cb07da3b5, TwoPlayerMode=True
+MANAGER: Neues Spiel mit Spieler 1 erstellt: GameID=1c98ef4b-0bef-4c24-924a-0b1cb07da3b5, PlayerID=6f44c161-9626-4bbd-8081-5b28d63d2d81, Name=Player9
+MANAGER: Player1: ID=6f44c161-9626-4bbd-8081-5b28d63d2d81, Name=Player9
+MANAGER: Spieler versucht beizutreten: Name=Player7, ID=f3187079-725f-4724-a713-14a310bebba5
+MANAGER: Prüfe Spiel: 1afed180-e2fa-4f58-8425-d921dea8d034, IsTwoPlayerMode=True, Player2 existiert: True
+MANAGER: Prüfe Spiel: 1c98ef4b-0bef-4c24-924a-0b1cb07da3b5, IsTwoPlayerMode=True, Player2 existiert: True
+MANAGER: Player2 vor ID-Zuweisung: 
+MANAGER: Player2 nach ID-Zuweisung: f3187079-725f-4724-a713-14a310bebba5
+MANAGER: Spieler 2 dem Spiel 1c98ef4b-0bef-4c24-924a-0b1cb07da3b5 hinzugefügt: ID=f3187079-725f-4724-a713-14a310bebba5, Name=Player7
+MANAGER: Player1: ID=6f44c161-9626-4bbd-8081-5b28d63d2d81, Name=Player9
+MANAGER: Player2: ID=f3187079-725f-4724-a713-14a310bebba5, Name=Player7
+MANAGER: CurrentPlayer: Player9

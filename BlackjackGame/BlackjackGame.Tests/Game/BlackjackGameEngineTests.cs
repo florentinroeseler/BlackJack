@@ -391,7 +391,6 @@ namespace BlackjackGame.Tests.Game
             // Arrange
             engine.PlaceBet(100);
 
-            // Manually set up winning scenario - Player gets 20, dealer gets 19
             engine.Player1.Hand.Clear();
             engine.Dealer.Hand.Clear();
             engine.Player1.Hand.AddCard(new Card(Rank.King, Suit.Hearts));
@@ -402,7 +401,7 @@ namespace BlackjackGame.Tests.Game
             var originalBalance = engine.Player1.Balance;
 
             // Act
-            engine.Stand(); // This should trigger dealer turn and winner determination
+            engine.Stand();
 
             // Assert
             Assert.That(engine.State, Is.EqualTo(GameState.GameOver));
@@ -416,7 +415,6 @@ namespace BlackjackGame.Tests.Game
             // Arrange
             engine.PlaceBet(100);
 
-            // Set up blackjack scenario - Player gets blackjack, dealer doesn't
             engine.Player1.Hand.Clear();
             engine.Dealer.Hand.Clear();
             engine.Player1.Hand.AddCard(new Card(Rank.Ace, Suit.Hearts));
@@ -448,7 +446,7 @@ namespace BlackjackGame.Tests.Game
             var originalBalance = engine.Player1.Balance;
 
             // Act
-            engine.Hit(); // This should trigger dealer turn because player busted
+            engine.Hit();
 
             // Assert
             Assert.That(engine.State, Is.EqualTo(GameState.GameOver));
@@ -462,7 +460,6 @@ namespace BlackjackGame.Tests.Game
             // Arrange
             engine.PlaceBet(100);
 
-            // Set up push scenario - both have 20
             engine.Player1.Hand.Clear();
             engine.Dealer.Hand.Clear();
             engine.Player1.Hand.AddCard(new Card(Rank.King, Suit.Hearts));
@@ -486,13 +483,11 @@ namespace BlackjackGame.Tests.Game
             // Arrange
             engine.PlaceBet(100);
 
-            // Set up scenario where dealer will bust
             engine.Player1.Hand.Clear();
             engine.Dealer.Hand.Clear();
             engine.Player1.Hand.AddCard(new Card(Rank.Ten, Suit.Hearts));
             engine.Player1.Hand.AddCard(new Card(Rank.Nine, Suit.Spades));
 
-            // Dealer has 16 and will be forced to draw (and likely bust)
             engine.Dealer.Hand.AddCard(new Card(Rank.Ten, Suit.Hearts));
             engine.Dealer.Hand.AddCard(new Card(Rank.Six, Suit.Spades));
 
@@ -503,7 +498,6 @@ namespace BlackjackGame.Tests.Game
 
             // Assert
             Assert.That(engine.State, Is.EqualTo(GameState.GameOver));
-            // Player should win regardless of dealer's final value if dealer busts
             Assert.That(engine.Player1.Balance, Is.GreaterThan(originalBalance));
         }
 
@@ -565,9 +559,6 @@ namespace BlackjackGame.Tests.Game
         [Test]
         public void EvaluatePlayerOutcome_EdgeCases_ShouldHandleCorrectly()
         {
-            // This test ensures the private EvaluatePlayerOutcome method works correctly
-            // by testing through the public interface
-
             // Test Case: Player and Dealer both have blackjack (should be push)
             engine.PlaceBet(100);
             engine.Player1.Hand.Clear();

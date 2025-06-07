@@ -1,6 +1,4 @@
-﻿
-// BlackjackGame.Core/Models/Hand.cs
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using BlackjackGame.Core.Models;
 

@@ -1,28 +1,15 @@
-// BlackjackGame.Core/Protos/blackjack.proto
 syntax = "proto3";
 
 option csharp_namespace = "BlackjackGame.Core.Protos";
 
 package blackjack;
 
-// Der Blackjack Service definiert die RPC-Methoden für das Spiel
 service BlackjackService {
-  // Verbindung zum Spiel herstellen und Spieler registrieren
   rpc JoinGame (JoinRequest) returns (JoinResponse);
-  
-  // Einen Einsatz platzieren
   rpc PlaceBet (BetRequest) returns (GameStateResponse);
-  
-  // Karte ziehen (Hit)
   rpc Hit (ActionRequest) returns (GameStateResponse);
-  
-  // Keine weiteren Karten nehmen (Stand)
   rpc Stand (ActionRequest) returns (GameStateResponse);
-  
-  // Status des Spiels abrufen
   rpc GetGameState (GameStateRequest) returns (GameStateResponse);
-  
-  // Neue Runde starten
   rpc StartNewRound (NewRoundRequest) returns (GameStateResponse);
 }
 

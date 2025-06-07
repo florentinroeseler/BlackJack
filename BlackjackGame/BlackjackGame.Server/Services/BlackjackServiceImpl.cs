@@ -1,5 +1,4 @@
-﻿// BlackjackGame.Server/Services/BlackjackServiceImpl.cs
-using System;
+﻿using System;
 using System.Threading.Tasks;
 using Grpc.Core;
 using BlackjackGame.Core.Game;
@@ -31,7 +30,6 @@ namespace BlackjackGame.Server.Services
 
             Debug($"Spieler verbunden: ID={playerId}, Name={request.PlayerName}");
 
-            // Prüfe aktuelle Konfiguration
             var game = _gameManager.GetGameForPlayer(playerId);
             if (game != null)
             {
@@ -92,7 +90,6 @@ namespace BlackjackGame.Server.Services
 
                 Player currentPlayer = null;
 
-                // Erster Vergleich: Request PlayerId mit Player1.Id
                 Debug($"Vergleiche Request.PlayerId={request.PlayerId} mit Player1.Id={p1Id}");
                 bool match1 = (game.Player1?.Id == request.PlayerId);
                 Debug($"Match mit Player1.Id: {match1}");
@@ -104,7 +101,6 @@ namespace BlackjackGame.Server.Services
                 }
                 else if (game.IsTwoPlayerMode && game.Player2 != null)
                 {
-                    // Zweiter Vergleich: Request PlayerId mit Player2.Id
                     Debug($"Vergleiche Request.PlayerId={request.PlayerId} mit Player2.Id={p2Id}");
                     bool match2 = (game.Player2?.Id == request.PlayerId);
                     Debug($"Match mit Player2.Id: {match2}");
@@ -155,11 +151,11 @@ namespace BlackjackGame.Server.Services
                 }
 
                 Player currentPlayer = null;
-                if (game.Player1.Id == request.PlayerId) // Geändert: Vergleiche mit Id statt Name
+                if (game.Player1.Id == request.PlayerId)
                 {
                     currentPlayer = game.Player1;
                 }
-                else if (game.IsTwoPlayerMode && game.Player2?.Id == request.PlayerId) // Geändert: Vergleiche mit Id statt Name
+                else if (game.IsTwoPlayerMode && game.Player2?.Id == request.PlayerId)
                 {
                     currentPlayer = game.Player2;
                 }
@@ -191,11 +187,11 @@ namespace BlackjackGame.Server.Services
                 }
 
                 Player currentPlayer = null;
-                if (game.Player1.Id == request.PlayerId) // Geändert: Vergleiche mit Id statt Name
+                if (game.Player1.Id == request.PlayerId)
                 {
                     currentPlayer = game.Player1;
                 }
-                else if (game.IsTwoPlayerMode && game.Player2?.Id == request.PlayerId) // Geändert: Vergleiche mit Id statt Name
+                else if (game.IsTwoPlayerMode && game.Player2?.Id == request.PlayerId)
                 {
                     currentPlayer = game.Player2;
                 }
@@ -240,7 +236,6 @@ namespace BlackjackGame.Server.Services
                     return CreateErrorResponse("Cannot start a new round now");
                 }
 
-                // Prüfen, ob der Spieler noch genug Geld hat
                 if (game.Player1.Balance <= 0 || (game.IsTwoPlayerMode && game.Player2?.Balance <= 0))
                 {
                     return CreateErrorResponse("Game over - insufficient balance");
@@ -263,7 +258,6 @@ namespace BlackjackGame.Server.Services
                 Message = GetStateMessage(game)
             };
 
-            // Spieler hinzufügen
             response.Players.Add(MapPlayerInfo(game.Player1, game.CurrentPlayer == game.Player1));
 
             if (game.IsTwoPlayerMode && game.Player2 != null)
@@ -312,8 +306,8 @@ namespace BlackjackGame.Server.Services
         {
             var playerInfo = new PlayerInfo
             {
-                Name = player.Name, // Hier den Namen des Spielers anzeigen
-                Id = player.Id,     // Geändert: Verwende die Id anstelle des Namens
+                Name = player.Name,
+                Id = player.Id,
                 Balance = player.Balance,
                 CurrentBet = player.CurrentBet,
                 IsCurrentPlayer = isCurrentPlayer,
