@@ -119,3 +119,5 @@ C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame
 C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Tests\bin\Debug\net8.0\Grpc.Net.Common.dll
 C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Tests\bin\Debug\net8.0\BlackjackGame.Server.dll
 C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Tests\bin\Debug\net8.0\BlackjackGame.Server.pdb
+C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Tests\bin\Debug\net8.0\Castle.Core.dll
+C:\Users\flore\source\repos\WebEngineering\BlackJack\BlackjackGame\BlackjackGame.Tests\bin\Debug\net8.0\Moq.dll

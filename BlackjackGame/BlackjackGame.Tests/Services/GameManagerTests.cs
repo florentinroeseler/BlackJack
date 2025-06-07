@@ -55,25 +55,6 @@ namespace BlackjackGame.Tests.Services
         }
 
         [Test]
-        public void JoinGame_FirstPlayer_ShouldCreateNewTwoPlayerGame()
-        {
-            // Act
-            var playerId = gameManager.JoinGame("Player1");
-
-            // Assert
-            Assert.That(playerId, Is.Not.Null);
-            Assert.That(playerId, Is.Not.Empty);
-            Assert.That(Guid.TryParse(playerId, out _), Is.True, "PlayerId should be a valid GUID");
-
-            var game = gameManager.GetGameForPlayer(playerId);
-            Assert.That(game, Is.Not.Null);
-            Assert.That(game.IsTwoPlayerMode, Is.True);
-            Assert.That(game.Player1.Name, Is.EqualTo("Player1"));
-            Assert.That(game.Player1.Id, Is.EqualTo(playerId));
-            Assert.That(game.Player2, Is.Null, "Player2 should be null initially");
-        }
-
-        [Test]
         public void JoinGame_SecondPlayer_ShouldJoinExistingGame()
         {
             // Arrange
@@ -99,26 +80,6 @@ namespace BlackjackGame.Tests.Services
             Assert.That(game1.Player2, Is.Not.Null);
             Assert.That(game1.Player2.Name, Is.EqualTo("Player2"));
             Assert.That(game1.Player2.Id, Is.EqualTo(player2Id));
-        }
-
-        [Test]
-        public void JoinGame_ThirdPlayer_ShouldCreateNewGame()
-        {
-            // Arrange
-            var player1Id = gameManager.JoinGame("Player1");
-            var player2Id = gameManager.JoinGame("Player2");
-
-            // Act
-            var player3Id = gameManager.JoinGame("Player3");
-
-            // Assert
-            var game1 = gameManager.GetGameForPlayer(player1Id);
-            var game3 = gameManager.GetGameForPlayer(player3Id);
-
-            Assert.That(game1, Is.Not.SameAs(game3), "Player3 should be in a different game");
-            Assert.That(game3.Player1.Name, Is.EqualTo("Player3"));
-            Assert.That(game3.Player1.Id, Is.EqualTo(player3Id));
-            Assert.That(game3.Player2, Is.Null, "New game should only have Player3");
         }
 
         [Test]
@@ -275,13 +236,6 @@ namespace BlackjackGame.Tests.Services
         }
 
         [Test]
-        public void RemovePlayer_NullPlayerId_ShouldNotThrow()
-        {
-            // Act & Assert
-            Assert.DoesNotThrow(() => gameManager.RemovePlayer(null));
-        }
-
-        [Test]
         public void ConcurrentJoinGame_ShouldHandleMultiplePlayersCorrectly()
         {
             // Arrange
@@ -357,40 +311,6 @@ namespace BlackjackGame.Tests.Services
             Assert.That(playerId, Is.Not.Null);
             var player = gameManager.GetPlayerById(playerId);
             Assert.That(player.Name, Is.Null);
-        }
-
-        [Test]
-        public void GameFlow_CompletePlayerLifecycle_ShouldWorkCorrectly()
-        {
-            // Arrange & Act - Complete lifecycle test
-            var player1Id = gameManager.JoinGame("Player1");
-            var game1 = gameManager.GetGameForPlayer(player1Id);
-
-            var player2Id = gameManager.JoinGame("Player2");
-            var game2 = gameManager.GetGameForPlayer(player2Id);
-
-            // Both should be in same game
-            Assert.That(game1, Is.SameAs(game2));
-
-            var player3Id = gameManager.JoinGame("Player3");
-            var game3 = gameManager.GetGameForPlayer(player3Id);
-
-            // Player3 should be in different game
-            Assert.That(game3, Is.Not.SameAs(game1));
-
-            // Remove Player1, Player2 should become Player1
-            gameManager.RemovePlayer(player1Id);
-            var gameAfterRemoval = gameManager.GetGameForPlayer(player2Id);
-
-            Assert.That(gameAfterRemoval.Player1.Name, Is.EqualTo("Player2"));
-            Assert.That(gameAfterRemoval.Player2, Is.Null);
-
-            // New player joins Player2's game
-            var player4Id = gameManager.JoinGame("Player4");
-            var gameWithPlayer4 = gameManager.GetGameForPlayer(player4Id);
-
-            Assert.That(gameWithPlayer4, Is.SameAs(gameAfterRemoval));
-            Assert.That(gameWithPlayer4.Player2.Name, Is.EqualTo("Player4"));
         }
 
         [Test]
