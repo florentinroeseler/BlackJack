@@ -146,8 +146,7 @@
               "RelativeToolTip": "BlackjackGame.Tests\\Models\\DeckTests.cs",
               "ViewState": "AgIAABUBAAAAAAAAAAAqwAgBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:42:42.943Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T06:42:42.943Z"
             },
             {
               "$type": "Document",
@@ -159,8 +158,7 @@
               "RelativeToolTip": "BlackjackGame.Tests\\Models\\CardTests.cs",
               "ViewState": "AgIAAJYAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:42:19.005Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T06:42:19.005Z"
             },
             {
               "$type": "Document",
@@ -172,8 +170,7 @@
               "RelativeToolTip": "BlackjackGame.Server\\Startup.cs",
               "ViewState": "AgIAAB4AAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:40:59.86Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T06:40:59.86Z"
             },
             {
               "$type": "Document",
@@ -185,8 +182,7 @@
               "RelativeToolTip": "BlackjackGame.Server\\Program.cs",
               "ViewState": "AgIAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:40:42.029Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T06:40:42.029Z"
             },
             {
               "$type": "Document",
@@ -211,8 +207,7 @@
               "RelativeToolTip": "BlackjackGame.Tests\\Models\\HandTests.cs",
               "ViewState": "AgIAAIgBAAAAAAAAAAAUwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:43:07.622Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T06:43:07.622Z"
             },
             {
               "$type": "Document",
@@ -224,8 +219,7 @@
               "RelativeToolTip": "BlackJackGame.Core\\Models\\Player.cs",
               "ViewState": "AgIAACwAAAAAAAAAAAAAwDYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:35:07.101Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T06:35:07.101Z"
             },
             {
               "$type": "Document",
@@ -237,8 +231,7 @@
               "RelativeToolTip": "BlackJackGame.Core\\Models\\Hand.cs",
               "ViewState": "AgIAABkAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:34:52.811Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T06:34:52.811Z"
             },
             {
               "$type": "Document",
@@ -250,8 +243,7 @@
               "RelativeToolTip": "BlackJackGame.Core\\Protos\\blackjack.proto",
               "ViewState": "AgIAAEUAAAAAAAAAAAAAAAsAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003853|",
-              "WhenOpened": "2025-05-12T13:35:15.896Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-12T13:35:15.896Z"
             },
             {
               "$type": "Document",
@@ -263,8 +255,7 @@
               "RelativeToolTip": "BlackjackGame.Tests\\Services\\GameManagerTests.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:44:16.149Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T06:44:16.149Z"
             },
             {
               "$type": "Document",
@@ -276,8 +267,7 @@
               "RelativeToolTip": "BlackjackGame.Tests\\UnitTest1.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:44:26.544Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T06:44:26.544Z"
             },
             {
               "$type": "Document",
@@ -289,8 +279,7 @@
               "RelativeToolTip": "BlackjackGame.Tests\\Models\\PlayerTests.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAJgBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T03:55:04.738Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T03:55:04.738Z"
             },
             {
               "$type": "Document",
@@ -302,8 +291,7 @@
               "RelativeToolTip": "BlackjackGame.Tests\\Services\\BlackjackServiceImplTests.cs",
               "ViewState": "AgIAAKEBAAAAAAAAAAAuwKgBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T04:20:35.589Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T04:20:35.589Z"
             },
             {
               "$type": "Document",
@@ -315,8 +303,7 @@
               "RelativeToolTip": "BlackJackGame.Core\\Models\\Deck.cs",
               "ViewState": "AgIAACMAAAAAAAAAAAAgwAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:34:43.587Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T06:34:43.587Z"
             },
             {
               "$type": "Document",
@@ -328,8 +315,7 @@
               "RelativeToolTip": "BlackJackGame.Core\\Models\\Dealer.cs",
               "ViewState": "AgIAAD0AAAAAAAAAAAAkwEQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:33:46.499Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T06:33:46.499Z"
             },
             {
               "$type": "Document",
@@ -341,8 +327,7 @@
               "RelativeToolTip": "BlackjackGame.Client\\MainWindow.xaml.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:30:12.428Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T06:30:12.428Z"
             },
             {
               "$type": "Document",
@@ -354,8 +339,7 @@
               "RelativeToolTip": "BlackjackGame.Tests\\Models\\DealerTests.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgBAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T04:03:23.497Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T04:03:23.497Z"
             },
             {
               "$type": "Document",
@@ -367,8 +351,7 @@
               "RelativeToolTip": "BlackjackGame.Client\\AssemblyInfo.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:29:36.866Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T06:29:36.866Z"
             },
             {
               "$type": "Document",
@@ -380,8 +363,7 @@
               "RelativeToolTip": "BlackjackGame.Tests\\Game\\BlackjackGameEngineTests.cs",
               "ViewState": "AgIAACcCAAAAAAAAAAAswDACAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T03:59:06.732Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T03:59:06.732Z"
             },
             {
               "$type": "Document",
@@ -393,8 +375,7 @@
               "RelativeToolTip": "BlackjackGame.Client\\ViewModels\\LocalBlackjackGame.cs",
               "ViewState": "AgIAANoAAAAAAAAAAAAAwNEAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:26:45.483Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T06:26:45.483Z"
             },
             {
               "$type": "Document",
@@ -406,8 +387,7 @@
               "RelativeToolTip": "BlackjackGame.Server\\Services\\GameManager.cs",
               "ViewState": "AgIAAHAAAAAAAAAAAAAwwHoAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T13:39:34.851Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-12T13:39:34.851Z"
             },
             {
               "$type": "Document",
@@ -419,8 +399,7 @@
               "RelativeToolTip": "BlackjackGame.Client\\Services\\BlackjackClient.cs",
               "ViewState": "AgIAAHwAAAAAAAAAAAAwwIUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T05:13:25.765Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T05:13:25.765Z"
             },
             {
               "$type": "Document",
@@ -431,8 +410,7 @@
               "ToolTip": "C:\\Users\\flore\\source\\repos\\WebEngineering\\BlackJack\\BlackjackGame\\BlackjackGame.Client\\MainWindow.xaml",
               "RelativeToolTip": "BlackjackGame.Client\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-05T15:02:46.2Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T15:02:46.2Z"
             },
             {
               "$type": "Document",
@@ -444,8 +422,7 @@
               "RelativeToolTip": "BlackJackGame.Core\\Game\\BlackjackGameEngine.cs",
               "ViewState": "AgIAABEBAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T13:11:55.669Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-12T13:11:55.669Z"
             },
             {
               "$type": "Document",
@@ -457,8 +434,7 @@
               "RelativeToolTip": "BlackJackGame.Core\\Models\\Card.cs",
               "ViewState": "AgIAACkAAAAAAAAAAAAswAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T12:04:34.48Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-12T12:04:34.48Z"
             },
             {
               "$type": "Document",
@@ -470,8 +446,7 @@
               "RelativeToolTip": "BlackjackGame.Client\\Converters\\StringToVisibilityConverter.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T05:13:16.669Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T05:13:16.669Z"
             },
             {
               "$type": "Document",
@@ -482,8 +457,7 @@
               "ToolTip": "C:\\Users\\flore\\source\\repos\\WebEngineering\\BlackJack\\BlackjackGame\\BlackJackGame.Core\\CoreClasses.cd",
               "RelativeToolTip": "BlackJackGame.Core\\CoreClasses.cd",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000463|",
-              "WhenOpened": "2025-06-07T04:45:45.556Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T04:45:45.556Z"
             },
             {
               "$type": "Document",
@@ -495,8 +469,7 @@
               "RelativeToolTip": "BlackjackGame.Client\\App.xaml.cs",
               "ViewState": "AgIAACQAAAAAAAAAAAAYwDUAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T12:33:29.217Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-12T12:33:29.217Z"
             },
             {
               "$type": "Document",
@@ -507,8 +480,7 @@
               "ToolTip": "C:\\Users\\flore\\source\\repos\\WebEngineering\\BlackJack\\BlackjackGame\\BlackjackGame.Client\\Controls\\CardControl.xaml",
               "RelativeToolTip": "BlackjackGame.Client\\Controls\\CardControl.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-12T12:29:01.158Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-12T12:29:01.158Z"
             },
             {
               "$type": "Document",
@@ -519,8 +491,7 @@
               "ToolTip": "C:\\Users\\flore\\source\\repos\\WebEngineering\\BlackJack\\BlackjackGame\\BlackjackGame.Client\\App.xaml",
               "RelativeToolTip": "BlackjackGame.Client\\App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-12T12:27:32.949Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-12T12:27:32.949Z"
             },
             {
               "$type": "Document",
@@ -532,8 +503,7 @@
               "RelativeToolTip": "BlackjackGame.Client\\Controls\\CardControl.xaml.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAUwB4AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T12:29:31.486Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-12T12:29:31.486Z"
             }
           ]
         }
